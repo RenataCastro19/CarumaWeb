@@ -417,10 +417,124 @@ h1, h2, h3 {
     width: 160px;
   }
 
-  .hero__tagline {
-    font-size: 1rem;
+
+}
+
+.servicios-preview {
+  max-width: 1200px;                        /* Mismo ancho máximo que el resto del sitio, para mantener alineación */
+  margin: 0 auto;                            /* Centra el bloque horizontalmente */
+  padding: var(--espacio-xl) var(--espacio-md); /* Mucho espacio arriba/abajo (xl), separa bien esta sección de las demás */
+  text-align: center;                         /* Centra el título y subtítulo del encabezado */
+}
+
+.servicios-preview__header {
+  margin-bottom: var(--espacio-lg);   /* Espacio entre el encabezado y el grid de tarjetas debajo */
+}
+
+.servicios-preview__titulo {
+  font-size: 2rem;                       /* Título grande, es el nombre de la sección */
+  margin-bottom: var(--espacio-xs);       /* Espacio pequeño hacia el subtítulo */
+}
+
+.servicios-preview__texto {
+  font-family: var(--fuente-cta);   /* Questrial, para el subtítulo/descripción breve */
+  color: var(--gris-texto);           /* Color de texto secundario, menos protagonismo que el título */
+  font-size:1.3rem;
+}
+
+.servicios-preview__grid {
+  display: grid;                          /* Usamos CSS Grid para acomodar las tarjetas */
+  grid-template-columns: repeat(3, 1fr);   /* 3 columnas de igual ancho (repeat(3, 1fr) = "repite 3 veces una columna de tamaño 1fr") */
+  gap: var(--espacio-md);                   /* Espacio entre cada tarjeta */
+  margin-bottom: var(--espacio-lg);          /* Espacio antes del botón "Ver todos los servicios" */
+}
+
+.tarjeta-servicio {
+  overflow: hidden;                    /* Si la imagen intenta salirse de la tarjeta al hacer zoom en hover, se recorta */
+  border-radius: var(--radio-borde);    /* Esquinas levemente redondeadas, consistente con el resto del sitio */
+  text-align: left;                      /* El texto dentro de la tarjeta se alinea a la izquierda (aunque la sección esté centrada) */
+  transition: var(--transicion-suave);    /* Anima el efecto hover de "levantarse" */
+}
+
+/* Al pasar el mouse sobre la tarjeta completa, se "levanta" ligeramente hacia arriba */
+.tarjeta-servicio:hover {
+  transform: translateY(-6px);   /* Mueve la tarjeta 6px hacia arriba (valor negativo = hacia arriba en el eje Y) */
+}
+
+.tarjeta-servicio__imagen {
+  width: 100%;               /* La imagen ocupa todo el ancho de la tarjeta */
+  height: 360px;               /* Alto fijo, así todas las tarjetas quedan del mismo tamaño sin importar la proporción de cada foto */
+  object-fit: cover;            /* La imagen se recorta para llenar ese espacio sin deformarse (mismo truco que usamos en el hero) */
+  display: block;                /* Quita el espacio fantasma que las imágenes dejan por defecto */
+}
+
+.tarjeta-servicio__contenido {
+  padding: var(--espacio-sm) 0;   /* Espacio arriba/abajo del texto, sin padding a los lados (ya que la tarjeta no tiene fondo propio) */
+}
+
+.tarjeta-servicio__titulo {
+  font-size: 1.3rem;                  /* Tamaño del nombre del servicio (ej. "Esquites") */
+  margin-bottom: var(--espacio-xs);    /* Espacio hacia la descripción debajo */
+}
+
+.tarjeta-servicio__texto {
+  font-size: 0.95rem;         /* Texto descriptivo, un poco más chico que el normal */
+  color: var(--gris-texto);     /* Color secundario, no compite con el título */
+}
+
+/* Nueva variante de botón: outline (solo borde), para acciones secundarias/menos urgentes que el CTA principal */
+.boton--secundario {
+  background-color: transparent;   /* Sin relleno, solo se ve el borde */
+  color: var(--negro);               /* Texto negro (esta sección tiene fondo claro, a diferencia del hero) */
+  border: 1px solid var(--negro);     /* Borde negro delgado */
+}
+
+/* Al pasar el mouse: efecto invertido, se rellena de negro y el texto se vuelve blanco */
+.boton--secundario:hover {
+  background-color: var(--negro);
+  color: var(--blanco);
+}
+
+/* En pantallas medianas/chicas (tablets y celulares), las 3 columnas se apilan en 1 sola */
+@media (max-width: 900px) {
+  .servicios-preview__grid {
+    grid-template-columns: 1fr;
   }
 }
 
+.intro {
+  max-width: 800px;                        /* Limita el ancho del bloque completo, para que el texto no se estire de lado a lado en pantallas grandes */
+  margin: 0 auto;                            /* Centra el bloque horizontalmente */
+  padding: var(--espacio-xl) var(--espacio-md); /* Mucho espacio arriba/abajo, para que la sección "respire" y se sienta importante */
+  text-align: center;                         /* Centra todo el texto dentro */
+}
 
+/* ::before crea un elemento decorativo ANTES del contenido de .intro__contenido — aquí lo usamos como una lineita dorada */
+.intro__contenido::before {
+  content: '';                        /* Obligatorio para que el ::before se renderice, aunque esté vacío */
+  display: block;                      /* Se comporta como un bloque independiente, no como texto en línea */
+  width: 60px;                          /* Ancho de la línea decorativa */
+  height: 2px;                           /* Grosor de la línea */
+  background-color: var(--dorado);        /* Color dorado, el mismo acento de toda la marca */
+  margin: 0 auto var(--espacio-md);        /* Centra la línea horizontalmente y deja espacio hacia el título de abajo */
+}
 
+.intro__titulo {
+  font-size: 2rem;                     /* Título más grande que el texto normal, refuerza que es el encabezado de la sección */
+  margin-bottom: var(--espacio-md);      /* Espacio hacia el párrafo debajo */
+  line-height: 1.4;                       /* Un poco más de espacio entre líneas que el default, se ve menos apretado si el título ocupa 2 líneas */
+}
+
+.intro__texto {
+  font-family: var(--fuente-cta);   /* Usamos Questrial en vez de Open Sans, para que se sienta menos "plano"/genérico y más acorde al estilo de marca */
+  font-size: 1.15rem;                 /* Un poco más grande que el texto normal (1rem), más fácil de leer y con más presencia */
+  color: var(--gris-texto);            /* Color secundario, no compite con el título */
+  line-height: 1.8;                     /* Bastante espacio entre líneas, look más "editorial"/lujoso, menos denso */
+}
+
+/* En móvil, el título se reduce un poco para que no ocupe demasiado espacio vertical en pantallas chicas */
+@media (max-width: 768px) {
+  .intro__titulo {
+    font-size: 1.6rem;
+  }
+}
