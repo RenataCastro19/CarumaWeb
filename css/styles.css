@@ -537,4 +537,121 @@ h1, h2, h3 {
   .intro__titulo {
     font-size: 1.6rem;
   }
+}.pagina-header {
+  max-width: 1200px;                                   /* Mismo ancho que el resto del sitio */
+  margin: 0 auto;                                        /* Centrado horizontal */
+  padding: var(--espacio-lg) var(--espacio-md) var(--espacio-md); /* Espacio arriba/lados/abajo (menos abajo que arriba, para acercarse al primer servicio) */
+  text-align: center;                                     /* Centra el título y subtítulo */
+}
+
+.pagina-header__titulo {
+  font-size: 2.2rem;                    /* Título grande, es el h1 de la página */
+  margin-bottom: var(--espacio-xs);      /* Espacio pequeño hacia el subtítulo */
+}
+
+.pagina-header__texto {
+  font-family: var(--fuente-cta);   /* Questrial */
+  color: var(--gris-texto);           /* Color secundario */
+  font-size: 1.15rem;                  /* Un poco más grande que el texto normal */
+}
+
+.servicio-bloque {
+  max-width: 1200px;                        /* Ancho máximo consistente con el resto del sitio */
+  margin: 0 auto;                            /* Centrado */
+  padding: var(--espacio-xl) var(--espacio-md); /* Mucho espacio arriba/abajo entre cada bloque de servicio */
+  display: grid;                              /* Grid de 2 columnas: fotos y texto */
+  grid-template-columns: 1fr 1fr;              /* Ambas columnas del mismo ancho */
+  gap: var(--espacio-xl);                       /* Espacio grande entre la columna de fotos y la de texto */
+  align-items: center;                           /* Centra verticalmente ambas columnas entre sí */
+}
+
+.servicio-bloque__fotos {
+  position: relative;   /* Necesario para que las 2 fotos de adentro se puedan posicionar "absolute" una sobre otra */
+  height: 480px;          /* Alto fijo del contenedor de fotos, define el "lienzo" donde se acomodan ambas imágenes */
+}
+
+.servicio-bloque__foto {
+  position: absolute;                                /* Se posiciona libremente dentro de .servicio-bloque__fotos */
+  border-radius: var(--radio-borde);                   /* Esquinas levemente redondeadas, consistente con el resto del sitio */
+  box-shadow: 0 20px 40px rgba(20, 17, 15, 0.15);        /* Sombra grande y suave, da sensación de "flotar", efecto premium */
+  object-fit: cover;                                      /* Recorta la imagen para llenar su espacio sin deformarse */
+}
+
+/* La foto del PRODUCTO es la más grande y protagonista, ubicada arriba a la izquierda */
+.servicio-bloque__foto--producto {
+  width: 60%;    /* Ocupa el 60% del ancho del contenedor */
+  height: 85%;    /* Ocupa el 85% del alto */
+  top: 0;          /* Pegada arriba */
+  left: 0;          /* Pegada a la izquierda */
+  z-index: 2;        /* Por ENCIMA de la otra foto (número más alto = más al frente) */
+}
+
+/* La foto de la BARRA montada es más chica, se superpone parcialmente abajo a la derecha, creando el efecto "collage" */
+.servicio-bloque__foto--barra {
+  width: 60%;
+  height: 65%;
+  bottom: 0;    /* Pegada abajo (en vez de "top", para que quede en la esquina opuesta) */
+  right: -65px;      /* Pegada a la derecha */
+  z-index: 1;     /* Por DEBAJO de la foto del producto, así se superponen visualmente */
+}
+
+.servicio-bloque__titulo {
+  font-size: 1.8rem;                  /* Título del servicio (ej. "Esquites") */
+  margin-bottom: var(--espacio-sm);     /* Espacio hacia la descripción */
+}
+
+.servicio-bloque__texto {
+  font-family: var(--fuente-cta);   /* Questrial */
+  color: var(--gris-texto);
+  font-size: 1.05rem;
+  line-height: 1.7;                    /* Buen espacio entre líneas, más fácil de leer */
+  margin-bottom: var(--espacio-md);     /* Espacio hacia el subtítulo "Qué incluye" */
+}
+
+.servicio-bloque__subtitulo {
+  font-size: 1.1rem;
+  color: var(--dorado);                  /* Color dorado, para que destaque como un "mini-encabezado" dentro del bloque */
+  text-transform: uppercase;               /* Mayúsculas */
+  letter-spacing: 0.05em;                    /* Separación entre letras, refuerza que es una etiqueta/categoría, no un título normal */
+  margin-bottom: var(--espacio-sm);           /* Espacio hacia la lista debajo */
+}
+
+.servicio-bloque__lista {
+  list-style: none;   /* Quitamos los bullets normales de <ul>, vamos a poner nuestros propios "check" con ::before */
+}
+
+.servicio-bloque__lista li {
+  position: relative;                 /* Necesario para posicionar el ::before (el check) respecto a cada línea */
+  padding-left: var(--espacio-md);      /* Espacio a la izquierda, para dejar lugar al ícono de check */
+  margin-bottom: var(--espacio-xs);      /* Espacio entre cada elemento de la lista */
+  color: var(--gris-texto);
+  font-size: 0.98rem;
+}
+
+/* Creamos un check (✓) dorado antes de cada elemento de la lista, en vez del bullet normal */
+.servicio-bloque__lista li::before {
+  content: '✓';               /* El carácter de check, escrito directo como contenido */
+  position: absolute;          /* Se posiciona libremente respecto al <li> */
+  left: 0;                       /* Pegado a la izquierda (dentro del espacio que dejamos con padding-left) */
+  color: var(--dorado);           /* Color dorado, para que combine con la marca */
+  font-weight: bold;                /* Negrita, para que se vea bien definido */
+}
+
+/* Truco para ALTERNAR el lado de las fotos en bloques pares (2do, 4to, 6to servicio) */
+.servicio-bloque:nth-child(even) .servicio-bloque__fotos {
+  order: 2;   /* "order" en CSS Grid/Flexbox cambia el ORDEN VISUAL sin cambiar el orden real del HTML — así el 2do bloque muestra el texto primero y las fotos después, dando la sensación de alternancia */
+}
+
+/* En pantallas medianas/chicas, todo se apila en 1 columna y ya no alternamos (se vería raro en móvil) */
+@media (max-width: 900px) {
+  .servicio-bloque {
+    grid-template-columns: 1fr;         /* 1 sola columna */
+    gap: var(--espacio-lg);               /* Reducimos el espacio, ya no necesita tanto en columna única */
+    padding: var(--espacio-lg) var(--espacio-md); /* Reducimos el padding vertical también */
+  }
+
+  .servicio-bloque__fotos {
+    height: 380px;   /* Reducimos un poco la altura del contenedor de fotos en pantallas chicas */
+    order: 0 !important;   /* Forzamos que SIEMPRE las fotos vayan primero en móvil, sin importar si es un bloque par o impar (cancela el alternado) */
+  }
 }

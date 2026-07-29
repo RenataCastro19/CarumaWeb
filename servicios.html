@@ -36,7 +36,41 @@
     </header>
 
     <main>
-    
+    <!-- Encabezado simple de la página, más pequeño que el hero de Inicio, solo para dar contexto de en qué página estás -->
+    <section class="pagina-header">
+        <h1 class="pagina-header__titulo">Nuestros Servicios</h1>
+        <p class="pagina-header__texto">Barras diseñadas para cada tipo de celebración</p>
+    </section>
+
+    <!-- Bloque de UN servicio completo. Vamos a repetir esta misma estructura para cada uno de los 6 servicios -->
+    <section class="servicio-bloque">
+    <!-- Contenedor de las 2 fotos (producto + barra montada), van juntas para el layout de "collage" -->
+    <div class="servicio-bloque__fotos">
+        <img src="img/productos/esquites-producto.png" alt="Esquites preparados Caruma" class="servicio-bloque__foto servicio-bloque__foto--producto">
+        <img src="img/eventos/esquites-barra.jpeg" alt="Barra de esquites Caruma montada en evento" class="servicio-bloque__foto servicio-bloque__foto--barra">
+    </div>
+
+    <!-- Contenedor del texto: título, descripción y la lista de "qué incluye" -->
+    <div class="servicio-bloque__contenido">
+        <h2 class="servicio-bloque__titulo">Esquites</h2>
+        <p class="servicio-bloque__texto">
+        Esquites de grano blanco o amarillo preparados
+        al momento con todos los ingredientes clásicos.
+        </p>
+
+        <h3 class="servicio-bloque__subtitulo">Qué incluye</h3>
+        <!-- Lista con viñetas, cada <li> es un elemento que incluye el servicio -->
+        <ul class="servicio-bloque__lista">
+        <li>Esquites de grano blanco o amarillo en vasitos de 8 oz</li>
+        <li>Crema, mayonesa y queso rallado</li>
+        <li>Queso amarillo líquido</li>
+        <li>Salsas y chiles en polvo</li>
+        <li>2 toppings a elegir (Doritos, Ruffles de queso o Cheetos)</li>
+        <li>Cacahuates salados</li>
+        <li>Personal atendiendo la barra durante todo el evento</li>
+        </ul>
+    </div>
+    </section>
     </main>
 
 
