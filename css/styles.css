@@ -1,0 +1,426 @@
+
+:root {
+  /* --- Colores de marca --- */
+  --dorado: #B8944F;
+  --dorado-claro: #D8C08E;
+  --negro: #14110F;
+  --blanco: #FAF7F2;
+  --gris-texto: #4A4640;
+
+  /* --- Tipografía --- */
+  --fuente-titulos: 'Cinzel', serif;
+  --fuente-cta: 'Questrial', sans-serif;
+  --fuente-cuerpo: 'Open Sans', sans-serif;
+
+  /* --- Espaciado (escala consistente, evita valores random tipo 13px, 27px) --- */
+  --espacio-xs: 0.5rem;   /* 8px */
+  --espacio-sm: 1rem;     /* 16px */
+  --espacio-md: 2rem;     /* 32px */
+  --espacio-lg: 4rem;     /* 64px */
+  --espacio-xl: 8rem;     /* 128px */
+
+  /* --- Bordes y transiciones --- */
+  --radio-borde: 2px;
+  --transicion-suave: 0.3s ease;
+}
+
+/* --- Reset básico --- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--fuente-cuerpo);
+  color: var(--gris-texto);
+  background-color: var(--blanco);
+  line-height: 1.6;
+}
+
+h1, h2, h3 {
+  font-family: var(--fuente-titulos);
+  color: var(--negro);
+  font-weight: 400; /* Cinzel se ve mejor sin negritas forzadas */
+  letter-spacing: 0.03em;
+}
+
+/* Respeto a quienes prefieren menos movimiento */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+.header {
+  position: sticky;      /* El header se queda pegado arriba al hacer scroll, en vez de desaparecer */
+  top: 0;                 /* Se pega exactamente en el borde superior de la ventana */
+  z-index: 100;            /* Se asegura de quedar ENCIMA del resto del contenido (números altos = más al frente) */
+  background-color: var(--blanco);              /* Fondo blanco hueso para que no se transparente el contenido de abajo */
+  border-bottom: 1px solid rgba(20, 17, 15, 0.08); /* Línea sutil de separación, casi transparente (8% de opacidad) */
+}
+
+.nav {
+  display: flex;                     /* Pone el logo y el menú en fila, uno al lado del otro */
+  align-items: center;               /* Los centra verticalmente entre sí */
+  justify-content: space-between;    /* Empuja el logo a la izquierda y el menú a la derecha */
+  max-width: 1200px;                  /* Evita que en pantallas gigantes el contenido se estire demasiado */
+  margin: 0 auto;                     /* Centra el bloque horizontalmente en la pantalla */
+  padding: var(--espacio-sm) var(--espacio-md); /* Espacio interno: arriba/abajo pequeño, izq/der mediano */
+}
+
+.nav__logo img {
+  display: block;  /* Quita un espacio fantasma que las imágenes dejan por defecto debajo (son inline por defecto) */
+}
+
+.nav__menu {
+  display: flex;              /* Pone los links del menú en fila horizontal */
+  gap: var(--espacio-md);     /* Espacio entre cada link */
+  list-style: none;            /* Quita los puntos/bullets que trae <ul> por defecto */
+}
+
+.nav__link {
+  font-family: var(--fuente-cta);  /* Usa Questrial, la fuente definida para botones/CTAs */
+  text-decoration: none;            /* Quita el subrayado azul por defecto de los links */
+  color: var(--negro);               /* Color del texto del link */
+  font-size: 0.95rem;                 /* Un poco más pequeño que el texto normal (1rem), look sutil */
+  letter-spacing: 0.02em;             /* Separa levemente las letras, refuerza el estilo elegante */
+  position: relative;                 /* Necesario para que el ::after (la línea animada) se posicione respecto a este link */
+  padding-bottom: 4px;                /* Espacio para que la línea animada no toque el texto */
+}
+
+/* ::after crea un elemento invisible "fantasma" después del contenido del link, lo usamos como línea decorativa */
+.nav__link::after {
+  content: '';                        /* Obligatorio en ::after aunque esté vacío, si no, no se renderiza */
+  position: absolute;                  /* Se posiciona libremente dentro del link (gracias al position:relative del padre) */
+  bottom: 0;                            /* Pegado a la parte de abajo del link */
+  left: 0;                               /* Empieza desde la izquierda */
+  width: 0;                               /* Empieza con ancho 0 (invisible) */
+  height: 1px;                            /* Grosor de la línea */
+  background-color: var(--dorado);         /* Color dorado de la línea */
+  transition: width var(--transicion-suave); /* Anima el CAMBIO de ancho de forma suave */
+}
+
+/* Cuando el usuario pone el mouse encima del link, la línea invisible crece hasta el 100% */
+.nav__link:hover::after {
+  width: 100%;
+}
+
+/* El link de Contacto se ve distinto: como un botón con borde, para destacarlo del resto */
+.nav__link--cta {
+  border: 1px solid var(--dorado);   /* Borde dorado delgado */
+  padding: 0.5rem 1.2rem;             /* Espacio interno para que se vea como botón, no como texto plano */
+  border-radius: var(--radio-borde);   /* Esquinas levemente redondeadas (2px, casi rectas, mantiene el look de lujo) */
+}
+
+/* Como el botón CTA ya tiene su propio estilo de borde, no necesita la línea animada del hover normal */
+.nav__link--cta::after {
+  display: none;
+}
+
+/* Al pasar el mouse sobre el botón CTA, se rellena de dorado y el texto cambia a blanco (efecto "invertido") */
+.nav__link--cta:hover {
+  background-color: var(--dorado);
+  color: var(--blanco);
+}
+
+/* El botón hamburguesa está oculto por defecto (solo aparece en móvil, ver media query abajo) */
+.nav__toggle {
+  display: none;
+  flex-direction: column;   /* Las 3 líneas se acomodan una debajo de otra */
+  gap: 5px;                  /* Espacio entre cada línea */
+  background: none;          /* Sin fondo, para que no se vea como botón tradicional */
+  border: none;                /* Sin borde */
+  cursor: pointer;              /* El cursor cambia a "mano" al pasar por encima, indica que es clickeable */
+  padding: var(--espacio-xs);    /* Área de click más grande (mejor experiencia táctil en móvil) */
+}
+
+.nav__toggle-line {
+  width: 24px;                        /* Ancho de cada línea del ícono hamburguesa */
+  height: 2px;                         /* Grosor de cada línea */
+  background-color: var(--negro);       /* Color de las líneas */
+  transition: var(--transicion-suave);   /* Anima cualquier cambio (usado cuando se convierte en "X") */
+}
+
+/* Esta media query SOLO aplica cuando la pantalla mide 768px o menos (tablets y celulares) */
+@media (max-width: 768px) {
+  .nav__toggle {
+    display: flex;   /* En móvil SÍ mostramos el botón hamburguesa */
+  }
+
+  .nav__menu {
+    position: fixed;                /* El menú se posiciona respecto a toda la pantalla, no al contenedor */
+    top: 0;                          /* Empieza desde arriba */
+    right: -100%;                     /* Empieza escondido fuera de la pantalla (a la derecha) */
+    height: 100vh;                     /* Ocupa el 100% del alto de la pantalla (vh = viewport height) */
+    width: 70%;                         /* Ocupa el 70% del ancho, no toda la pantalla */
+    max-width: 300px;                    /* Pero nunca más de 300px, aunque el celular sea grande */
+    background-color: var(--blanco);      /* Fondo del menú desplegado */
+    flex-direction: column;                /* Los links se acomodan en columna, no en fila, en móvil */
+    justify-content: center;                /* Centrados verticalmente */
+    align-items: center;                     /* Centrados horizontalmente */
+    gap: var(--espacio-lg);                   /* Más espacio entre links (son más fáciles de tocar con el dedo) */
+    transition: right var(--transicion-suave); /* Anima el deslizamiento al abrir/cerrar */
+    box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);  /* Sombra sutil a la izquierda del menú, le da profundidad */
+  }
+
+  /* Esta clase la agrega JavaScript cuando el usuario toca el botón hamburguesa */
+  .nav__menu.is-open {
+    right: 0;   /* Al agregar esta clase, el menú se desliza a su posición visible */
+  }
+
+  /* Cuando el menú está abierto (clase is-active en el botón), la línea 1 rota y se mueve para formar una "X" */
+  .nav__toggle.is-active .nav__toggle-line:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+  }
+
+  /* La línea del medio desaparece */
+  .nav__toggle.is-active .nav__toggle-line:nth-child(2) {
+    opacity: 0;
+  }
+
+  /* La línea 3 rota al revés, completando la "X" */
+  .nav__toggle.is-active .nav__toggle-line:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+  }
+}
+
+
+.footer {
+  background-color: var(--negro);   /* Fondo negro cálido, contrasta con el resto del sitio que es claro */
+  color: var(--blanco);               /* Color de texto por defecto dentro del footer (blanco, ya que el fondo es oscuro) */
+  margin-top: var(--espacio-xl);       /* Separación grande respecto al contenido de arriba, para que "respire" */
+}
+
+.footer__container {
+  max-width: 1200px;                          /* Mismo ancho máximo que el header, para que todo esté alineado */
+  margin: 0 auto;                              /* Centra el bloque horizontalmente */
+  padding: var(--espacio-lg) var(--espacio-md); /* Espacio interno grande arriba/abajo, mediano a los lados */
+  display: grid;                                /* Usamos CSS Grid para las 3 columnas (logo, navegación, contacto) */
+  grid-template-columns: 1.5fr 1fr 1fr;          /* 3 columnas: la primera (logo/slogan) es 1.5 veces más ancha que las otras 2 */
+  gap: var(--espacio-lg);                         /* Espacio entre las 3 columnas */
+}
+
+.footer__marca img {
+  filter: brightness(0) invert(1);   /* Convierte el logo (que probablemente es dorado/negro) a blanco puro, para que se vea sobre fondo oscuro */
+  margin-bottom: var(--espacio-sm);   /* Espacio entre el logo y el slogan debajo */
+}
+
+.footer__slogan {
+  font-size: 0.9rem;    /* Texto un poco más pequeño que el normal (1rem) */
+  opacity: 0.75;          /* Semi-transparente, para que no compita visualmente con el logo */
+  max-width: 280px;        /* Evita que el texto se estire demasiado en columnas anchas, mejora la legibilidad */
+}
+
+.footer__titulo {
+  font-size: 1rem;                    /* Tamaño de "Navegación" y "Contacto" */
+  color: var(--dorado-claro);          /* Dorado claro, para que destaquen como títulos de sección dentro del footer oscuro */
+  margin-bottom: var(--espacio-sm);     /* Espacio entre el título y la lista de links debajo */
+  text-transform: uppercase;             /* Convierte el texto a MAYÚSCULAS automáticamente (sin tener que escribirlo así en el HTML) */
+  letter-spacing: 0.05em;                 /* Separa las letras, común en títulos pequeños en mayúsculas (mejora la lectura) */
+}
+
+.footer__nav ul {
+  list-style: none;         /* Quita los bullets de la lista */
+  display: flex;             /* Acomoda los links */
+  flex-direction: column;     /* En columna (uno debajo del otro), no en fila */
+  gap: var(--espacio-xs);      /* Espacio pequeño entre cada link */
+}
+
+/* Aplicamos el mismo estilo a los links de navegación Y a los de contacto (WhatsApp, Instagram, Facebook) */
+.footer__nav a,
+.footer__contacto a {
+  color: var(--blanco);           /* Color blanco, visible sobre el fondo negro */
+  text-decoration: none;           /* Sin subrayado */
+  opacity: 0.8;                     /* Ligeramente transparente por defecto */
+  font-size: 0.9rem;                 /* Tamaño de texto un poco más chico que el normal */
+  transition: var(--transicion-suave); /* Anima el cambio de color/opacidad en hover */
+}
+
+/* Al pasar el mouse, el link se vuelve completamente opaco y cambia a dorado claro (indica interactividad) */
+.footer__nav a:hover,
+.footer__contacto a:hover {
+  opacity: 1;
+  color: var(--dorado-claro);
+}
+
+.footer__contacto {
+  display: flex;              /* Acomoda la ubicación y los links de redes sociales */
+  flex-direction: column;      /* En columna */
+  gap: var(--espacio-xs);       /* Espacio pequeño entre cada elemento */
+}
+
+.footer__contacto p {
+  font-size: 0.9rem;    /* Mismo tamaño que los links, para que se vea uniforme */
+  opacity: 0.75;          /* Semi-transparente */
+  margin-bottom: var(--espacio-xs); /* Pequeño espacio debajo (entre "Veracruz, México" y el primer link) */
+}
+
+.footer__bottom {
+  border-top: 1px solid rgba(250, 247, 242, 0.1);  /* Línea sutil que separa el copyright del resto (10% de opacidad en blanco) */
+  text-align: center;                                /* Centra el texto del copyright */
+  padding: var(--espacio-sm);                          /* Espacio interno alrededor del texto */
+}
+
+.footer__bottom p {
+  font-size: 0.8rem;   /* Texto pequeño, es información secundaria (copyright) */
+  opacity: 0.6;          /* Bastante transparente, no debe robar atención */
+}
+
+/* En pantallas de 768px o menos (tablets/celulares) */
+@media (max-width: 768px) {
+  .footer__container {
+    grid-template-columns: 1fr;   /* Las 3 columnas se convierten en 1 sola columna, apiladas verticalmente */
+    gap: var(--espacio-md);        /* Reducimos un poco el espacio entre bloques (ya no necesitan tanto en columna única) */
+    text-align: center;             /* Centramos todo el texto, se ve mejor apilado que alineado a la izquierda en móvil */
+  }
+
+  .footer__marca img {
+    margin-left: auto;    /* Estos dos "auto" centran el logo horizontalmente */
+    margin-right: auto;
+  }
+
+  .footer__slogan {
+    max-width: none;       /* Quitamos el límite de ancho que tenía en desktop, ya no es necesario en columna única */
+    margin-left: auto;      /* Centramos el bloque de texto */
+    margin-right: auto;
+  }
+
+  .footer__nav ul {
+    align-items: center;   /* Centra los links de navegación horizontalmente dentro de su columna */
+  }
+}
+.whatsapp-flotante {
+  position: fixed;                  /* Se queda fijo en la pantalla aunque el usuario haga scroll */
+  bottom: var(--espacio-md);         /* Separado del borde inferior */
+  right: var(--espacio-md);           /* Separado del borde derecho */
+  z-index: 200;                        /* Encima de casi todo (más alto que el header, que es 100) */
+  width: 56px;                          /* Ancho del círculo */
+  height: 56px;                          /* Alto del círculo (igual al ancho = círculo perfecto) */
+  background-color: #25D366;              /* Verde oficial de la marca WhatsApp (no usamos variable porque es color de marca ajena, no de Caruma) */
+  color: var(--blanco);                    /* Color del ícono SVG (gracias a fill="currentColor" en el SVG) */
+  border-radius: 50%;                       /* 50% convierte el cuadrado en círculo perfecto */
+  display: flex;                             /* Para centrar el ícono adentro */
+  align-items: center;                        /* Centra el ícono verticalmente */
+  justify-content: center;                     /* Centra el ícono horizontalmente */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);    /* Sombra suave, hace que "flote" visualmente sobre el contenido */
+  transition: var(--transicion-suave);           /* Anima el hover de forma suave */
+}
+
+/* Al pasar el mouse por encima, el botón crece ligeramente y la sombra se intensifica */
+.whatsapp-flotante:hover {
+  transform: scale(1.08);                          /* Lo agranda un 8% */
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);        /* Sombra un poco más marcada, refuerza la sensación de "elevación" */
+}
+
+/* En móvil, lo hacemos un poco más pequeño y más cerca del borde, para no estorbar tanto el contenido */
+@media (max-width: 768px) {
+  .whatsapp-flotante {
+    bottom: var(--espacio-sm);
+    right: var(--espacio-sm);
+    width: 50px;
+    height: 50px;
+  }
+}
+
+
+.hero {
+  position: relative;   /* Necesario para que sus elementos hijos (overlay, contenido) se posicionen "absolute" respecto a esta sección */
+  width: 100%;            /* Ocupa todo el ancho de la pantalla */
+  height: 100vh;            /* Ocupa el 100% del alto de la ventana visible (vh = viewport height), efecto "pantalla completa" */
+  overflow: hidden;          /* Si la imagen se pasa un poco del tamaño del contenedor, se recorta en vez de generar scroll */
+}
+
+.hero__imagen {
+  width: 100%;                 /* La imagen ocupa todo el ancho disponible */
+  height: 100%;                  /* Y todo el alto disponible */
+  object-fit: cover;              /* CLAVE: hace que la imagen "cubra" todo el espacio sin deformarse, recortando lo que sobra */
+  object-position: center;         /* El recorte se hace manteniendo el CENTRO de la imagen visible (por eso importa que tu foto esté centrada) */
+}
+
+.hero__overlay {
+  position: absolute;    /* Se posiciona flotando encima de la imagen, dentro del .hero (gracias al position:relative del padre) */
+  top: 0;                  /* Pegado arriba */
+  left: 0;                   /* Pegado a la izquierda */
+  width: 100%;                 /* Cubre todo el ancho */
+  height: 100%;                  /* Cubre todo el alto */
+  background-color: rgba(20, 17, 15, 0.5);  /* Tu color --negro, pero con 50% de opacidad (el "rgba" permite transparencia, a diferencia de un color sólido) */
+}
+
+.hero__contenido {
+  position: absolute;              /* Flota encima de la imagen Y del overlay */
+  top: 50%;                          /* Empieza a la mitad vertical de la pantalla... */
+  left: 50%;                          /* ...y a la mitad horizontal */
+  transform: translate(-50%, -50%);    /* Trick de centrado perfecto: mueve el elemento hacia atrás la mitad de SU PROPIO tamaño, quedando exactamente centrado */
+  text-align: center;                   /* Centra el texto dentro del bloque */
+  color: var(--blanco);                  /* Color de texto blanco, para que contraste con el fondo oscurecido */
+  padding: 0 var(--espacio-md);           /* Espacio a los lados, para que el texto no toque los bordes en pantallas angostas */
+  width: 100%;                             /* Ocupa el ancho completo disponible... */
+  max-width: 600px;                         /* ...pero nunca más de 600px, así el texto no se estira demasiado en pantallas gigantes */
+}
+
+.hero__logo {
+  width: 220px;                       /* Tamaño del logo dentro del hero, más grande que en el header (es el protagonista aquí) */
+  height: auto;                        /* Se ajusta automáticamente para mantener la proporción real del logo, sin deformarlo */
+  margin-bottom: var(--espacio-md);     /* Espacio entre el logo y el tagline debajo */
+  filter: brightness(0) invert(1);       /* Convierte el logo a blanco puro, ya que va sobre una foto oscurecida (mismo truco que usamos en el footer) */
+}
+
+.hero__tagline {
+  font-family: var(--fuente-cta);       /* Fuente Questrial, la misma de siempre */
+  font-size: 1.2rem;                     /* Tamaño de texto, sin cambios */
+  margin-bottom: var(--espacio-md);       /* Espacio hacia el elemento de abajo, sin cambios */
+  letter-spacing: 0.02em;                  /* Separación entre letras, sin cambios */
+  color: var(--blanco);                     /* Color blanco, para que se lea sobre la foto oscurecida — AHORA sí aplica en todas las pantallas, no solo en móvil */
+}
+
+/* Clase genérica ".boton" — la vamos a reutilizar en TODO el sitio para cualquier botón, no solo en el hero */
+.boton {
+  display: inline-block;              /* Permite darle padding y tamaño como si fuera un bloque, pero se comporta como texto en línea */
+  font-family: var(--fuente-cta);      /* Fuente Questrial para todos los botones del sitio */
+  text-decoration: none;                /* Quita el subrayado de link */
+  padding: 0.9rem 2.2rem;                /* Espacio interno generoso, hace que se sienta como botón "premium" y fácil de tocar en móvil */
+  border-radius: var(--radio-borde);      /* Esquinas levemente redondeadas, consistente con el resto del sitio */
+  transition: var(--transicion-suave);     /* Anima el hover */
+  font-size: 1rem;                          /* Tamaño de texto del botón */
+  letter-spacing: 0.03em;                    /* Separación entre letras */
+}
+
+/* Variante específica: el botón "principal" (dorado sólido), el más importante de la jerarquía visual */
+.boton--principal {
+  background-color: var(--dorado);   /* Fondo dorado sólido */
+  color: var(--negro);                 /* Texto negro, para buen contraste sobre el dorado */
+  border: 1px solid var(--dorado);      /* Borde del mismo color, para que se vea consistente si luego cambia el fondo en hover */
+}
+
+/* Al pasar el mouse: efecto "invertido", el botón se vacía y el borde se vuelve blanco */
+.boton--principal:hover {
+  background-color: transparent;   /* Se queda sin relleno, se ve la foto de fondo detrás */
+  color: var(--blanco);              /* El texto cambia a blanco para seguir siendo legible */
+  border-color: var(--blanco);        /* El borde también cambia a blanco */
+}
+
+/* En móvil, reducimos un poco el tamaño del logo y del tagline, para que quepan mejor en pantallas angostas */
+@media (max-width: 768px) {
+  .hero__logo {
+    width: 160px;
+  }
+
+  .hero__tagline {
+    font-size: 1rem;
+  }
+}
+
+
+

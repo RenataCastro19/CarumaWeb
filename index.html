@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Caruma ofrece barras de snacks y bebidas para eventos en Veracruz. Esquites, chicharrones preparados, micheladas, sopas preparadas y más ">
+    <title>Caruma</title>
+    <link rel="icon" href="img/logo/logo-favicon.png" type="image/png">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Questrial&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet"></head>
+    
+
+<body>
+    <header class="header">
+        <nav class="nav">
+            <a href="index.html" class="nav__logo">
+            <img src="img/logo/caruma-logo.png" alt="Caruma - Barras de snacks y bebidas para eventos" width="160" height ="88">
+            </a>
+
+            <button class="nav__toggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav-menu">
+                <span class="nav__toggle-line"></span>
+                <span class="nav__toggle-line"></span>
+                <span class="nav__toggle-line"></span>
+            </button>
+
+            <ul class="nav__menu" id="nav-menu">
+                <li><a href="index.html" class="nav__link">Inicio</a></li>
+               <li><a href="nosotros.html" class="nav__link">Nosotros</a></li>
+                <li><a href="servicios.html" class="nav__link">Servicios</a></li>
+                <li><a href="galeria.html" class="nav__link">Galería</a></li>
+                <li><a href="contacto.html" class="nav__link nav__link--cta">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+     <!-- <section> agrupa el hero como una unidad temática independiente, buena práctica semántica de HTML5 -->
+    <section class="hero">
+    <!-- Foto de fondo del hero, en <img> normal (no background-image de CSS) para que el alt ayude al SEO -->
+        <img src="img/eventos/hero-principal.png" alt="Barra de esquites Caruma montada en un evento cumpleaños" class="hero__imagen">
+
+        <!-- Capa oscura semi-transparente ENCIMA de la foto, para que el texto blanco se lea bien sobre cualquier imagen -->
+        <div class="hero__overlay"></div>
+
+        <!-- Contenido de texto que va POR ENCIMA de la imagen y el overlay (logo, tagline, botón) -->
+        <div class="hero__contenido">
+            <!-- Usamos el logo en versión blanca/dorada, ya que va sobre una foto oscurecida -->
+            <img src="img/logo/caruma-logo.png" alt="Caruma" class="hero__logo">
+            <h1 class="hero__tagline">Barra de snacks y bebidas para eventos en Veracruz</h1>
+            <p class="hero__slogan-secundario">Momentos especiales, sabores que se recuerdan</p>
+            <!-- Botón CTA principal, lleva directo a WhatsApp con mensaje precargado -->
+            <a href="https://wa.me/525519778386?text=Hola%2C%20me%20interesa%20cotizar%20una%20barra%20para%20mi%20evento" class="boton boton--principal" target="_blank" rel="noopener noreferrer">
+            Cotiza tu evento
+            </a>
+        </div>
+    </section>   
+    <section class="intro">
+        <div class="intro__contenido">
+            <h2 class="intro__titulo">Momentos que se disfrutan, sabores que se recuerdan</h2>
+            <p class="intro__texto">
+            En Caruma llevamos barras de snacks y bebidas a tus eventos más importantes:
+            XV años, bodas, bautizos y cualquier celebración. Cada barra se monta con
+            cuidado, buena presentación y el sabor que hace que tus invitados sigan
+            hablando de tu evento.
+            </p>
+        </div>
+    </section>
+    </main>
+
+
+
+        <!-- <footer> es la etiqueta semántica correcta para el pie de página -->
+    <footer class="footer">
+        <div class="footer__container">
+
+            <!-- Columna 1: logo y slogan de la marca -->
+            <div class="footer__marca">
+            <img src="img/logo/caruma-logo.png" alt="Caruma" width="140" height="77">
+            <p class="footer__slogan">Barras de snacks y bebidas para tus momentos especiales</p>
+            </div>
+
+            <!-- Columna 2: navegación repetida (buena práctica de UX, el usuario no tiene que subir hasta arriba) -->
+            <nav class="footer__nav">
+            <h3 class="footer__titulo">Navegación</h3>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="nosotros.html">Nosotros</a></li>
+                <li><a href="servicios.html">Servicios</a></li>
+                <li><a href="galeria.html">Galería</a></li>
+                <li><a href="contacto.html">Contacto</a></li>
+            </ul>
+            </nav>
+
+            <!-- Columna 3: datos de contacto directo -->
+            <div class="footer__contacto">
+            <h3 class="footer__titulo">Contacto</h3>
+            <p>Veracruz, México</p>
+            <!-- target="_blank" abre en pestaña nueva; rel="noopener noreferrer" es seguridad estándar al abrir en nueva pestaña -->
+            <a href="https://wa.me/525519778386" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+            <a href="https://www.instagram.com/caruma_barra" target="_blank" rel="noopener noreferrer">Instagram</a>
+            <a href="https://www.facebook.com/share/19H92B3DFh/" target="_blank" rel="noopener noreferrer">Facebook</a>
+            </div>
+        </div>
+
+        <!-- Barra inferior separada, solo con el copyright -->
+        <div class="footer__bottom">
+            <p>&copy; 2026 Caruma. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- Botón flotante de WhatsApp -->
+    <a href="https://wa.me/525519778386?text=Hola%2C%20me%20interesa%20cotizar%20una%20barra%20para%20mi%20evento"
+        class="whatsapp-flotante"
+        target="_blank"                       
+        rel="noopener noreferrer"             
+        aria-label="Escríbenos por WhatsApp"  
+        >
+        <!-- SVG del ícono oficial de WhatsApp. fill="currentColor" hace que tome el color de texto definido en CSS -->
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="28" height="28">
+            <!-- Primer path: dibuja el "teléfono" dentro del globo de chat -->
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+            <!-- Segundo path: dibuja el contorno circular del globo de chat -->
+            <path d="M12.001 2C6.478 2 2 6.477 2 12c0 1.82.48 3.53 1.317 5.008L2 22l5.108-1.29A9.955 9.955 0 0 0 12.001 22C17.523 22 22 17.523 22 12S17.523 2 12.001 2zm0 18.062a8.03 8.03 0 0 1-4.354-1.26l-.312-.185-3.031.765.798-2.999-.203-.322A8.02 8.02 0 0 1 3.938 12c0-4.452 3.612-8.062 8.063-8.062S20.064 7.548 20.064 12 16.452 20.062 12.001 20.062z"/>
+        </svg>
+    </a>
+
+    <script src="js/main.js"></script>
+
+</body>
