@@ -36,7 +36,91 @@
     </header>
 
     <main>
-    
+    <!-- Mismo estilo de encabezado que usamos en servicios.html, para mantener consistencia entre páginas internas -->
+    <section class="pagina-header">
+        <h1 class="pagina-header__titulo">Nosotros</h1>
+        <p class="pagina-header__texto">La historia detrás de Caruma</p>
+    </section>
+
+    <!-- Sección de historia, texto centrado en un bloque de ancho limitado para buena lectura -->
+    <section class="historia">
+        <div class="historia__contenido">
+            <h2 class="historia__titulo">Nuestra historia</h2>
+            <p class="historia__texto">
+            <span class="historia__badge">Desde agosto 2025</span><br>
+            Caruma nació en agosto de 2025, de la mano de Renata, Rebeca e Irvin.
+            Caruma es, antes que nada, un proyecto de familia.
+            </p>
+            <p class="historia__texto">
+            Desde el primer evento, nuestra meta ha sido la misma: ofrecer un servicio
+            con el que nosotros mismos nos sintiéramos cómodos. Por eso todo lo que
+            preparamos y servimos es exactamente lo que nosotros consumiríamos,
+            cuidando siempre la calidad de cada ingrediente.
+            </p>
+        </div>
+    </section>
+
+    <!-- Sección de las 4 tarjetas de "qué nos distingue" -->
+    <section class="distintivos">
+        <h2 class="distintivos__titulo">Qué nos distingue</h2>
+
+    <!-- Contenedor que acomoda las 4 tarjetas en cuadrícula -->
+        <div class="distintivos__grid">
+            <!-- Cada "distintivo" es una tarjeta: ícono + título + texto -->
+            <div class="distintivo">
+                <div class="distintivo__icono">
+                    <!-- Ícono SVG lineal (outline), como pediste en tu prompt maestro: delgado, minimalista -->
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                    </svg>
+                </div>
+                <h3 class="distintivo__titulo">Trato amable</h3>
+                <p class="distintivo__texto">Atendemos cada evento con calidez, siempre buscando que tú y tus invitados se sientan cómodos.</p>
+            </div>
+
+            <div class="distintivo">
+                <div class="distintivo__icono">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <path d="M12 2l2.4 7.4H22l-6 4.4 2.3 7.4L12 16.8l-6.3 4.4 2.3-7.4-6-4.4h7.6z"/>
+                    </svg>
+                </div>
+                <h3 class="distintivo__titulo">Presentación cuidada</h3>
+                <p class="distintivo__texto">Nuestra barra blanca con detalles en dorado da armonía y elegancia a cualquier evento.</p>
+            </div>
+
+            <div class="distintivo">
+                <div class="distintivo__icono">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <path d="M9 12l2 2 4-4M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0z"/>
+                    </svg>
+                </div>
+                <h3 class="distintivo__titulo">Ingredientes de calidad</h3>
+                <p class="distintivo__texto">Todo lo que servimos es lo mismo que nosotros consumiríamos: la mejor calidad al mejor precio.</p>
+            </div>
+
+            <div class="distintivo">
+                <div class="distintivo__icono">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2M12 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8z"/>
+                    </svg>
+                </div>
+                <h3 class="distintivo__titulo">Equipo uniformado</h3>
+                <p class="distintivo__texto">Personal siempre uniformado, para dar una imagen profesional en cada evento.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Última sección de nosotros.html: una foto grande del equipo, con texto de cierre 1400×800px	Horizontal-->
+    <section class="equipo">
+        <img src="img/eventos/equipo-trabajando.png" alt="Equipo de Caruma trabajando en un evento" class="equipo__imagen">
+        <div class="equipo__texto">
+            <h2 class="equipo__titulo">El equipo detrás de cada evento</h2>
+            <p class="equipo__parrafo">
+            Renata, Rebeca e Irvin, presentes en cada evento para asegurarnos de que
+            todo salga como lo imaginaste.
+            </p>
+        </div>
+    </section>
     </main>
 
 

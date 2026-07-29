@@ -589,7 +589,7 @@ h1, h2, h3 {
 /* La foto de la BARRA montada es más chica, se superpone parcialmente abajo a la derecha, creando el efecto "collage" */
 .servicio-bloque__foto--barra {
   width: 60%;
-  height: 65%;
+  height: 85%;
   bottom: 0;    /* Pegada abajo (en vez de "top", para que quede en la esquina opuesta) */
   right: -65px;      /* Pegada a la derecha */
   z-index: 1;     /* Por DEBAJO de la foto del producto, así se superponen visualmente */
@@ -654,4 +654,257 @@ h1, h2, h3 {
     height: 380px;   /* Reducimos un poco la altura del contenedor de fotos en pantallas chicas */
     order: 0 !important;   /* Forzamos que SIEMPRE las fotos vayan primero en móvil, sin importar si es un bloque par o impar (cancela el alternado) */
   }
+}
+
+
+.proceso {
+  max-width: 1200px;                        /* Ancho máximo consistente con el resto del sitio */
+  margin: 0 auto;                            /* Centrado */
+  padding: var(--espacio-xl) var(--espacio-md); /* Mucho espacio interno, arriba/abajo y lados */
+  background-color: var(--negro);              /* Fondo oscuro, para diferenciar esta sección visualmente del resto de la página (que es clara) */
+  border-radius: var(--radio-borde);             /* Esquinas levemente redondeadas */
+  text-align: center;                              /* Centra todo el contenido */
+}
+
+.proceso__header {
+  margin-bottom: var(--espacio-lg);   /* Espacio entre el encabezado y los 4 pasos debajo */
+}
+
+.proceso__titulo {
+  color: var(--blanco);       /* Blanco, ya que el fondo de esta sección es oscuro */
+  font-size: 2rem;
+  margin-bottom: var(--espacio-xs);
+}
+
+.proceso__texto {
+  font-family: var(--fuente-cta);
+  color: var(--dorado-claro);   /* Dorado claro, buen contraste sobre negro y refuerza la marca */
+  font-size: 1.1rem;
+}
+
+.proceso__pasos {
+  display: grid;                          /* Los 4 pasos en cuadrícula */
+  grid-template-columns: repeat(4, 1fr);   /* 4 columnas iguales, uno por paso */
+  gap: var(--espacio-lg);                   /* Espacio entre cada paso */
+  margin-bottom: var(--espacio-lg);          /* Espacio hacia el botón CTA debajo */
+}
+
+/* El círculo con el número de cada paso */
+.proceso__numero {
+  display: flex;                       /* Para centrar el número dentro del círculo */
+  align-items: center;
+  justify-content: center;
+  width: 56px;                          /* Tamaño del círculo */
+  height: 56px;
+  margin: 0 auto var(--espacio-sm);       /* Centrado horizontal + espacio hacia el título del paso */
+  border: 1px solid var(--dorado);         /* Borde dorado delgado, no relleno, para que se vea elegante y no "pesado" */
+  border-radius: 50%;                       /* Círculo perfecto */
+  font-family: var(--fuente-titulos);        /* Cinzel, para reforzar que es un elemento destacado */
+  color: var(--dorado);
+  font-size: 1.4rem;
+}
+
+.proceso__paso-titulo {
+  color: var(--blanco);
+  font-size: 1.15rem;
+  margin-bottom: var(--espacio-xs);
+}
+
+.proceso__paso-texto {
+  font-size: 0.92rem;
+  color: rgba(250, 247, 242, 0.7);   /* Blanco con 70% de opacidad, en vez de blanco puro, para que se vea como texto secundario */
+  line-height: 1.6;
+}
+
+/* En pantallas medianas (tablets), los 4 pasos se acomodan en 2 columnas x 2 filas */
+@media (max-width: 900px) {
+  .proceso__pasos {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* En celulares, se apilan en 1 sola columna */
+@media (max-width: 600px) {
+  .proceso__pasos {
+    grid-template-columns: 1fr;
+  }
+}
+
+.historia {
+  max-width: 800px;                                    /* Mismo ancho limitado que usamos en .intro, para buena lectura */
+  margin: 0 auto;                                        /* Centrado horizontal */
+  padding: var(--espacio-lg) var(--espacio-md) var(--espacio-xl); /* Espacio arriba mediano, lados medianos, abajo grande (separa bien de la siguiente sección) */
+  text-align: center;                                     /* Centra el texto */
+}
+
+.historia__titulo {
+  font-size: 2rem;
+  margin-bottom: var(--espacio-md);
+}
+
+.historia__texto {
+  font-family: var(--fuente-cta);   /* Questrial, consistente con el resto del sitio */
+  font-size: 1.1rem;
+  color: var(--gris-texto);
+  line-height: 1.8;                    /* Buen espacio entre líneas para lectura cómoda */
+  margin-bottom: var(--espacio-sm);     /* Espacio entre cada párrafo (tenemos 2 párrafos en el HTML) */
+}
+
+.distintivos {
+  max-width: 1200px;                                    /* Ancho máximo consistente con el resto del sitio */
+  margin: 0 auto;                                         /* Centrado */
+  padding: var(--espacio-lg) var(--espacio-md) var(--espacio-xl); /* Espacio arriba/lados medianos, abajo grande */
+  text-align: center;                                      /* Centra el título de la sección */
+}
+
+.distintivos__titulo {
+  font-size: 2rem;
+  margin-bottom: var(--espacio-lg);   /* Espacio hacia las tarjetas debajo */
+}
+
+.distintivos__grid {
+  display: grid;                          /* Las 4 tarjetas en cuadrícula */
+  grid-template-columns: repeat(4, 1fr);   /* 4 columnas iguales */
+  gap: var(--espacio-lg);                   /* Espacio entre cada tarjeta */
+}
+
+.distintivo__icono {
+  display: flex;                       /* Para centrar el SVG dentro */
+  align-items: center;
+  justify-content: center;
+  width: 60px;                          /* Tamaño del contenedor del ícono */
+  height: 60px;
+  margin: 0 auto var(--espacio-sm);       /* Centrado horizontal + espacio hacia el título */
+  color: var(--dorado);                    /* Como el SVG usa stroke="currentColor", este color dorado se le aplica automáticamente */
+}
+
+.distintivo__icono svg {
+  width: 100%;    /* El SVG llena todo su contenedor de 60x60px */
+  height: 100%;
+}
+
+.distintivo__titulo {
+  font-size: 1.15rem;
+  margin-bottom: var(--espacio-xs);
+}
+
+.distintivo__texto {
+  font-size: 0.92rem;
+  color: var(--gris-texto);
+  line-height: 1.6;
+}
+
+/* En tablets, 4 columnas se convierten en 2x2 */
+@media (max-width: 900px) {
+  .distintivos__grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* En celulares, se apilan en 1 columna */
+@media (max-width: 600px) {
+  .distintivos__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.equipo {
+  max-width: 1200px;                    /* Ancho máximo consistente con el resto del sitio */
+  margin: 0 auto var(--espacio-xl);       /* Centrado, con espacio grande abajo (separa del footer) */
+  padding: 0 var(--espacio-md);            /* Solo padding a los lados, sin arriba/abajo (ya viene después de otra sección con su propio espacio) */
+}
+
+.equipo__imagen {
+  width: 100%;                    /* Ocupa todo el ancho del contenedor */
+  height: 500px;                    /* Alto fijo, foto grande y protagonista */
+  object-fit: cover;                  /* Recorta sin deformar, mismo truco de siempre */
+  border-radius: var(--radio-borde);    /* Esquinas levemente redondeadas */
+  display: block;                        /* Quita espacio fantasma */
+  margin-bottom: var(--espacio-md);       /* Espacio hacia el texto debajo */
+}
+
+.equipo__texto {
+  text-align: center;      /* Centra el texto */
+  max-width: 700px;          /* Limita el ancho del párrafo para buena lectura */
+  margin: 0 auto;              /* Centra el bloque de texto */
+}
+
+.equipo__titulo {
+  font-size: 1.8rem;
+  margin-bottom: var(--espacio-sm);
+}
+
+.equipo__parrafo {
+  font-family: var(--fuente-cta);
+  color: var(--gris-texto);
+  font-size: 1.05rem;
+  line-height: 1.7;
+}
+
+/* En móvil, reducimos la altura de la foto para que no ocupe demasiada pantalla */
+@media (max-width: 768px) {
+  .equipo__imagen {
+    height: 320px;
+  }
+}
+
+.historia__titulo::before {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 2px;
+  background-color: var(--dorado);
+  margin: 0 auto var(--espacio-md);
+}
+
+.distintivo__icono {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+  height: 80px;
+  margin: 0 auto var(--espacio-sm);
+  color: var(--dorado);
+  background-color: rgba(184, 148, 79, 0.1);
+  border-radius: 50%;
+  transition: var(--transicion-suave);
+}
+
+.distintivo__icono svg {
+  width: 32px;
+  height: 32px;
+}
+
+.distintivo:hover .distintivo__icono {
+  background-color: var(--dorado);
+  color: var(--blanco);
+  transform: scale(1.08);
+}
+
+.historia__badge {
+  display: inline-block;
+  background-color: var(--dorado);
+  color: var(--negro);
+  font-family: var(--fuente-cta);
+  font-size: 0.85rem;
+  font-weight: bold;
+  padding: 0.4rem 1rem;
+  border-radius: 20px;
+  letter-spacing: 0.03em;
+  margin-bottom: var(--espacio-sm);
+}
+
+.distintivos {
+  max-width: none;
+  margin: 0;
+  padding: var(--espacio-xl) var(--espacio-md);
+  text-align: center;
+  background-color: rgba(184, 148, 79, 0.05);
+}
+
+.distintivos__grid,
+.distintivos__titulo {
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
 }
