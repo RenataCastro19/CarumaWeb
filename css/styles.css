@@ -596,7 +596,7 @@ h1, h2, h3 {
 }
 
 .servicio-bloque__titulo {
-  font-size: 1.8rem;                  /* Título del servicio (ej. "Esquites") */
+  font-size: 2.2rem;                  /* Título del servicio (ej. "Esquites") */
   margin-bottom: var(--espacio-sm);     /* Espacio hacia la descripción */
 }
 
@@ -609,7 +609,7 @@ h1, h2, h3 {
 }
 
 .servicio-bloque__subtitulo {
-  font-size: 1.1rem;
+  font-size: 1.30rem;
   color: var(--dorado);                  /* Color dorado, para que destaque como un "mini-encabezado" dentro del bloque */
   text-transform: uppercase;               /* Mayúsculas */
   letter-spacing: 0.05em;                    /* Separación entre letras, refuerza que es una etiqueta/categoría, no un título normal */
