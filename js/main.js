@@ -32,4 +32,44 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     });
   }
+  // Busca el formulario en el HTML usando su id
+const formularioContacto = document.getElementById('formulario-contacto');
+
+// Verificación de seguridad: solo ejecuta el código si el formulario existe en esta página (evita errores en las otras páginas que no tienen este formulario)
+if (formularioContacto) {
+
+  // Escucha el evento "submit", que se dispara cuando el usuario da clic en el botón de enviar
+  formularioContacto.addEventListener('submit', (evento) => {
+    // Evita el comportamiento por defecto del formulario (que normalmente recargaría la página o intentaría enviar a un servidor)
+    evento.preventDefault();
+
+    // Obtiene el valor que el usuario escribió/seleccionó en cada campo, usando su id
+    const nombre = document.getElementById('nombre').value;
+    const tipoEvento = document.getElementById('tipo-evento').value;
+    const servicio = document.getElementById('servicio').value;
+    const fecha = document.getElementById('fecha').value;
+    const invitados = document.getElementById('invitados').value;
+    const mensaje = document.getElementById('mensaje').value;
+
+    let texto = `Hola, soy ${nombre}. Me interesa cotizar una barra para mi evento.\n\n`;
+    texto += `Tipo de evento: ${tipoEvento}\n`;
+    texto += `Barra de interés: ${servicio}\n`;
+    texto += `Fecha: ${fecha}\n`;
+    texto += `Número de invitados: ${invitados}`;
+    // El mensaje adicional es opcional, solo se agrega si el usuario escribió algo
+    if (mensaje) {
+      texto += `\n\nMensaje adicional: ${mensaje}`;
+    }
+
+    // encodeURIComponent convierte espacios, saltos de línea y acentos en el formato que necesita una URL (%20, %0A, etc.)
+    const textoCodificado = encodeURIComponent(texto);
+    // Tu número de WhatsApp, mismo que usamos en el resto del sitio
+    const numeroWhatsApp = '525519778386';
+    // Arma la URL completa de WhatsApp con el mensaje ya codificado
+    const urlWhatsApp = `https://wa.me/${numeroWhatsApp}?text=${textoCodificado}`;
+
+    // Abre esa URL en una pestaña nueva, llevando al usuario directo a WhatsApp con el mensaje ya escrito
+    window.open(urlWhatsApp, '_blank');
+  });
+}
 });

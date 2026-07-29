@@ -908,3 +908,218 @@ h1, h2, h3 {
   margin-left: auto;
   margin-right: auto;
 }
+
+
+.contacto {
+  max-width: 1200px;                          /* Ancho máximo consistente con el resto del sitio */
+  margin: 0 auto;                              /* Centrado */
+  padding: var(--espacio-lg) var(--espacio-md) var(--espacio-xl); /* Espacio arriba/lados medianos, abajo grande */
+}
+
+.contacto__grid {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--espacio-xl);
+}
+
+.contacto__info-titulo {
+  font-size: 1.8rem;
+  margin-bottom: var(--espacio-sm);
+}
+
+.contacto__info-texto {
+  font-family: var(--fuente-cta);
+  color: var(--gris-texto);
+  margin-bottom: var(--espacio-lg);   /* Espacio hacia la lista de datos debajo */
+  line-height: 1.7;
+}
+
+.contacto__info {
+  text-align: center;
+  max-width: 600px;
+}
+
+.contacto__lista {
+  text-align: left;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.contacto__lista li {
+  padding: var(--espacio-sm) 0;                       /* Espacio arriba/abajo de cada elemento */
+  border-bottom: 1px solid rgba(20, 17, 15, 0.1);       /* Línea sutil separando cada dato de contacto, como una lista tipo "recibo" */
+}
+
+.contacto__etiqueta {
+  display: block;                    /* Ocupa su propia línea, arriba del dato real */
+  font-family: var(--fuente-cta);
+  font-size: 0.85rem;                  /* Chica, es una etiqueta/categoría, no el dato principal */
+  color: var(--dorado);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.3rem;                /* Espacio pequeño hacia el dato debajo */
+}
+
+.contacto__lista a {
+  color: var(--negro);
+  text-decoration: none;
+  margin-right: var(--espacio-sm);   /* Espacio entre "Instagram" y "Facebook", que están en la misma línea */
+  transition: var(--transicion-suave);
+}
+
+.contacto__lista a:hover {
+  color: var(--dorado);   /* Cambia a dorado al pasar el mouse, indica interactividad */
+}
+
+
+
+
+.formulario {
+  background-color: var(--blanco);
+  border: 1px solid rgba(20, 17, 15, 0.08);
+  border-top: 3px solid var(--dorado);
+  border-radius: var(--radio-borde);
+  padding: var(--espacio-lg) var(--espacio-lg);
+  box-shadow: 0 20px 50px rgba(20, 17, 15, 0.08);
+  max-width: 560px;
+  width: 100%;
+}
+
+.formulario__campo {
+  margin-bottom: var(--espacio-md);   /* Espacio entre cada campo del formulario */
+}
+
+.formulario__fila {
+  display: grid;                          /* Fecha e invitados van lado a lado */
+  grid-template-columns: 1fr 1fr;          /* 2 columnas iguales */
+  gap: var(--espacio-md);                   /* Espacio entre ambos campos */
+}
+
+.formulario label {
+  display: block;                    /* El label ocupa su propia línea, arriba del campo */
+  font-family: var(--fuente-cta);
+  font-size: 0.9rem;
+  color: var(--negro);
+  margin-bottom: 0.4rem;               /* Espacio pequeño hacia el input debajo */
+}
+
+/* Estilo compartido para los 3 tipos de campo: input, select y textarea */
+.formulario input,
+.formulario select,
+.formulario textarea {
+  width: 100%;                                    /* Ocupan todo el ancho disponible */
+  padding: 0.7rem 0.9rem;                           /* Espacio interno, cómodo para tocar/escribir */
+  border: 1px solid rgba(20, 17, 15, 0.2);            /* Borde sutil */
+  border-radius: var(--radio-borde);                    /* Esquinas levemente redondeadas, consistente con el sitio */
+  font-family: var(--fuente-cuerpo);                      /* Open Sans, buena legibilidad para texto que el usuario escribe */
+  font-size: 0.95rem;
+  color: var(--negro);
+  background-color: var(--blanco);
+  transition: var(--transicion-suave);                     /* Anima el cambio de borde al hacer focus */
+}
+
+/* Cuando el usuario hace clic/tab dentro de un campo (focus), el borde cambia a dorado */
+.formulario input:focus,
+.formulario select:focus,
+.formulario textarea:focus {
+  outline: none;              /* Quita el contorno azul feo por defecto del navegador */
+  border-color: var(--dorado);  /* Nuestro propio indicador de "campo activo", más acorde a la marca */
+}
+
+.formulario textarea {
+  resize: vertical;   /* Solo permite estirar el textarea verticalmente (no horizontalmente, que rompería el layout) */
+}
+
+.formulario__enviar {
+  width: 100%;              /* El botón ocupa todo el ancho del formulario */
+  border: none;                /* Quita el borde que los <button> traen por defecto */
+  cursor: pointer;               /* Cursor de "mano" al pasar por encima */
+  margin-top: var(--espacio-sm);  /* Espacio hacia el último campo arriba */
+}
+
+/* En móvil, reducimos el padding del formulario y apilamos fecha/invitados en 1 columna */
+@media (max-width: 600px) {
+  .formulario {
+    padding: var(--espacio-md);
+  }
+
+  .formulario__fila {
+    grid-template-columns: 1fr;
+  }
+}
+
+.formulario__titulo {
+  font-size: 1.6rem;
+  text-align: center;
+  margin-bottom: var(--espacio-xs);
+}
+
+.formulario__subtitulo {
+  font-family: var(--fuente-cta);
+  font-size: 0.95rem;
+  color: var(--gris-texto);
+  text-align: center;
+  margin-bottom: var(--espacio-lg);
+}
+
+.formulario input,
+.formulario select,
+.formulario textarea {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  border: 1.5px solid rgba(20, 17, 15, 0.15);
+  border-radius: 6px;
+  font-family: var(--fuente-cuerpo);
+  font-size: 0.95rem;
+  color: var(--negro);
+  background-color: var(--blanco);
+  transition: var(--transicion-suave);
+}
+
+.formulario input:hover,
+.formulario select:hover,
+.formulario textarea:hover {
+  border-color: rgba(184, 148, 79, 0.5);
+}
+
+.formulario input:focus,
+.formulario select:focus,
+.formulario textarea:focus {
+  outline: none;
+  border-color: var(--dorado);
+  box-shadow: 0 0 0 3px rgba(184, 148, 79, 0.12);
+}
+
+.formulario__enviar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-size: 1.05rem;
+  padding: 1rem 2rem;
+}
+
+.mapa {
+  max-width: 1200px;                                  /* Ancho máximo consistente con el resto del sitio */
+  margin: 0 auto;                                       /* Centrado */
+  padding: 0 var(--espacio-md) var(--espacio-xl);        /* Sin padding arriba (ya viene después de otra sección con su propio espacio), lados medianos, abajo grande */
+  text-align: center;                                     /* Centra el texto debajo del mapa */
+}
+
+.mapa__contenedor {
+  border-radius: var(--radio-borde);                    /* Esquinas redondeadas, consistente con el resto del sitio */
+  overflow: hidden;                                       /* Recorta el iframe para que respete las esquinas redondeadas (los iframes no heredan border-radius directamente) */
+  box-shadow: 0 10px 30px rgba(20, 17, 15, 0.1);           /* Sombra suave, le da un poco de profundidad */
+  margin-bottom: var(--espacio-sm);                         /* Espacio hacia el texto debajo */
+}
+
+.mapa__contenedor iframe {
+  display: block;   /* Quita el espacio fantasma que los iframes dejan por defecto debajo (igual que las imágenes) */
+}
+
+.mapa__texto {
+  font-family: var(--fuente-cta);
+  color: var(--gris-texto);
+  font-size: 0.95rem;
+}

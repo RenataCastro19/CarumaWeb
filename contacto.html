@@ -36,7 +36,103 @@
     </header>
 
     <main>
-    
+    <!-- Encabezado de página, mismo estilo que servicios.html y nosotros.html -->
+    <section class="pagina-header">
+        <h1 class="pagina-header__titulo">Contacto</h1>
+        <p class="pagina-header__texto">Cuéntanos de tu evento y te ayudamos a planearlo</p>
+    </section>
+
+    <section class="contacto">
+        <div class="contacto__grid">
+            <div class="contacto__info">
+            <!-- todo tu contenido de info sigue igual, sin tocar -->
+            </div>
+
+            <div class="contacto__formulario-wrapper">
+            <!-- AQUÍ va el <form>, dentro de este div -->
+            <form class="formulario" id="formulario-contacto">
+                <h2 class="formulario__titulo">Cotiza tu evento</h2>
+                <p class="formulario__subtitulo">Cuéntanos los detalles y te contactamos en menos de 24 horas</p>
+                <div class="formulario__campo">
+                    <label for="nombre">Nombre</label>
+                    <input type="text" id="nombre" name="nombre" required>
+                </div>
+
+                <div class="formulario__campo">
+                    <label for="tipo-evento">Tipo de evento</label>
+                    <select id="tipo-evento" name="tipo-evento" required>
+                        <option value="" disabled selected>Selecciona una opción</option>
+                        <option value="XV años">XV años</option>
+                        <option value="Boda">Boda</option>
+                        <option value="Bautizo">Bautizo</option>
+                        <option value="Cumpleaños">Cumpleaños</option>
+                        <option value="Otro">Otro</option>
+                    </select>
+                </div>
+
+                <div class="formulario__fila">
+                    <div class="formulario__campo">
+                        <label for="fecha">Fecha del evento</label>
+                        <input type="date" id="fecha" name="fecha" required>
+                    </div>
+
+                    <div class="formulario__campo">
+                        <label for="invitados">Número de invitados</label>
+                        <input type="number" id="invitados" name="invitados" min="1" required>
+                    </div>
+                </div>
+
+                <div class="formulario__campo">
+                    <label for="servicio">¿Qué barra te interesa?</label>
+                    <select id="servicio" name="servicio" required>
+                        <option value="" disabled selected>Selecciona una opción</option>
+                        <option value="Esquites">Esquites</option>
+                        <option value="Micheladas">Micheladas</option>
+                        <option value="Tostitos preparados">Tostitos preparados</option>
+                        <option value="Sopas preparadas">Sopas preparadas</option>
+                        <option value="Barra de snacks">Barra de snacks</option>
+                        <option value="Chicharrones preparados">Chicharrones preparados</option>
+                        <option value="Aún no lo decido">Aún no lo decido</option>
+                    </select>
+                </div>
+
+                <div class="formulario__campo">
+                    <label for="mensaje">Cuéntanos más (opcional)</label>
+                    <textarea id="mensaje" name="mensaje" rows="4"></textarea>
+                </div>
+
+                <button type="submit" class="boton boton--principal formulario__enviar">
+                    Enviar por WhatsApp
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18">
+                        <path d="M5 12h14M13 6l6 6-6 6"/>
+                    </svg>
+                    </button>
+                </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección del mapa, cierra la página de Contacto -->
+        <section class="mapa">
+            <div class="mapa__contenedor">
+                <!--
+                iframe = "inline frame", incrusta contenido de otra página (en este caso Google Maps) dentro de la nuestra
+                El "src" es el código único que Google genera para TU búsqueda específica — el tuyo será distinto
+                loading="lazy" retrasa la carga del mapa hasta que el usuario esté por verlo, mejora la velocidad de carga inicial de la página
+                -->
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d59376!2d-96.1250!3d19.1340!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sVeracruz-Boca%20del%20R%C3%ADo%2C%20Ver.!5e0!3m2!1ses!2smx!4v1"
+                    width="100%"
+                    height="450"
+                    style="border:0;"
+                    allowfullscreen=""
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"
+                    title="Zona de cobertura Caruma - Boca del Río y Veracruz">
+                </iframe>
+            </div>
+            <p class="mapa__texto">Servicio disponible en Boca del Río y Veracruz puerto</p>
+        </section>
     </main>
 
 
