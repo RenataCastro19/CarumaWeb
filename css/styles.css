@@ -1263,3 +1263,59 @@ h1, h2, h3 {
     font-size: 2rem;
   }
 }
+
+.hero__scroll {
+  position: absolute;                  /* Se posiciona respecto al .hero (que tiene position:relative) */
+  bottom: var(--espacio-lg);             /* Separado del borde inferior del hero */
+  left: 50%;                              /* Empieza a la mitad horizontal... */
+  transform: translateX(-50%);             /* ...y se centra exactamente (mismo truco de centrado que usamos antes) */
+  color: var(--blanco);                     /* Blanco, visible sobre la foto oscurecida */
+  width: 36px;                               /* Tamaño del ícono */
+  height: 36px;
+  display: flex;                               /* Para centrar el SVG dentro */
+  align-items: center;
+  justify-content: center;
+  animation: rebote 2s ease-in-out infinite;    /* Aplica la animación "rebote" que definimos abajo, dura 2s, se repite infinitamente */
+  z-index: 2;                                    /* Encima del overlay */
+}
+
+.hero__scroll svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* @keyframes define los "fotogramas clave" de una animación: qué pasa al inicio, a la mitad, al final */
+@keyframes rebote {
+  0%, 100% {
+    transform: translateX(-50%) translateY(0);   /* Posición normal, al 0% (inicio) y 100% (final) de la animación */
+  }
+  50% {
+    transform: translateX(-50%) translateY(10px);  /* A la mitad de la animación, se mueve 10px hacia abajo */
+  }
+  /* El resultado: sube y baja suavemente en bucle, como un rebote sutil que llama la atención sin ser molesto */
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .distintivo:hover .distintivo__icono {
+    background-color: var(--dorado);
+    color: var(--blanco);
+    transform: scale(1.08);
+  }
+}
+
+.distintivo__icono.is-activo {
+  background-color: var(--dorado);
+  color: var(--blanco);
+  transform: scale(1.08);
+}

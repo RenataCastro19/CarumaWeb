@@ -126,4 +126,30 @@ if (lightbox && galeriaItems.length > 0) {
     if (evento.key === 'ArrowLeft') mostrarAnterior();
   });
 }
+const elementosReveal = document.querySelectorAll('.reveal');
+
+if (elementosReveal.length > 0) {
+  const observadorReveal = new IntersectionObserver((entradas) => {
+    entradas.forEach((entrada) => {
+      if (entrada.isIntersecting) {
+        entrada.target.classList.add('is-visible');
+        observadorReveal.unobserve(entrada.target);
+      }
+    });
+  }, { threshold: 0.15 });
+
+  elementosReveal.forEach((elemento) => observadorReveal.observe(elemento));
+}
+
+const iconosDistintivo = document.querySelectorAll('.distintivo__icono');
+
+if (iconosDistintivo.length > 0) {
+  const observadorIconos = new IntersectionObserver((entradas) => {
+    entradas.forEach((entrada) => {
+      entrada.target.classList.toggle('is-activo', entrada.isIntersecting);
+    });
+  }, { threshold: 0.5 });
+
+  iconosDistintivo.forEach((icono) => observadorIconos.observe(icono));
+}
 });
