@@ -72,4 +72,58 @@ if (formularioContacto) {
     window.open(urlWhatsApp, '_blank');
   });
 }
+const galeriaItems = document.querySelectorAll('.galeria__item img');
+const lightbox = document.getElementById('lightbox');
+const lightboxImagen = document.getElementById('lightbox-imagen');
+const lightboxCerrar = document.getElementById('lightbox-cerrar');
+const lightboxAnterior = document.getElementById('lightbox-anterior');
+const lightboxSiguiente = document.getElementById('lightbox-siguiente');
+
+if (lightbox && galeriaItems.length > 0) {
+  let indiceActual = 0;
+
+  function abrirLightbox(indice) {
+    indiceActual = indice;
+    lightboxImagen.src = galeriaItems[indice].src;
+    lightboxImagen.alt = galeriaItems[indice].alt;
+    lightbox.classList.add('is-open');
+  }
+
+  function cerrarLightbox() {
+    lightbox.classList.remove('is-open');
+  }
+
+  function mostrarSiguiente() {
+    indiceActual = (indiceActual + 1) % galeriaItems.length;
+    lightboxImagen.src = galeriaItems[indiceActual].src;
+    lightboxImagen.alt = galeriaItems[indiceActual].alt;
+  }
+
+  function mostrarAnterior() {
+    indiceActual = (indiceActual - 1 + galeriaItems.length) % galeriaItems.length;
+    lightboxImagen.src = galeriaItems[indiceActual].src;
+    lightboxImagen.alt = galeriaItems[indiceActual].alt;
+  }
+
+  galeriaItems.forEach((img, indice) => {
+    img.addEventListener('click', () => abrirLightbox(indice));
+  });
+
+  lightboxCerrar.addEventListener('click', cerrarLightbox);
+  lightboxSiguiente.addEventListener('click', mostrarSiguiente);
+  lightboxAnterior.addEventListener('click', mostrarAnterior);
+
+  lightbox.addEventListener('click', (evento) => {
+    if (evento.target === lightbox) {
+      cerrarLightbox();
+    }
+  });
+
+  document.addEventListener('keydown', (evento) => {
+    if (!lightbox.classList.contains('is-open')) return;
+    if (evento.key === 'Escape') cerrarLightbox();
+    if (evento.key === 'ArrowRight') mostrarSiguiente();
+    if (evento.key === 'ArrowLeft') mostrarAnterior();
+  });
+}
 });

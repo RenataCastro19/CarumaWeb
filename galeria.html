@@ -36,7 +36,110 @@
     </header>
 
     <main>
-    
+    <!-- Mismo estilo de encabezado que las demás páginas internas -->
+    <section class="pagina-header">
+        <h1 class="pagina-header__titulo">Galería</h1>
+        <p class="pagina-header__texto">Momentos que hemos sido parte de celebrar</p>
+    </section>
+
+    <section class="galeria">
+    <!-- Contenedor de todas las fotos, en mosaico (algunas grandes, otras normales) -->
+        <div class="galeria__grid">
+            <!-- La clase extra "galeria__item--grande" hace que esa foto ocupe más espacio en el mosaico -->
+            <!-- Alterna entre fotos normales y grandes de forma manual, para controlar el ritmo visual -->
+            <div class="galeria__item galeria__item--grande">
+            <!-- loading="lazy" retrasa la carga de cada imagen hasta que el usuario esté por verla, mejora la velocidad de carga -->
+                <img src="img/galeria/esquites-cumpleanos.jpeg" alt="Esquites Caruma en evento" loading="lazy">
+            </div>
+            
+            <div class="galeria__item">
+                <img src="img/galeria/barra-chicharrones-cumpleanos.jpeg" alt="Tostitos Caruma en evento" loading="lazy">
+            </div>
+            
+            <!-- ... y así sucesivamente para cada foto, cada una con su propio alt descriptivo (importante para SEO y accesibilidad) -->
+            <div class="galeria__item">
+                <img src="img/galeria/barra-esquites-60-anos.png" alt="Evento con barra Caruma" loading="lazy">
+            </div>
+
+            <div class="galeria__item">
+                <img src="img/galeria/barra-esquites-bautizo.jpeg" alt="Barra de esquites Caruma en bautizo" loading="lazy">
+            </div>
+
+            <div class="galeria__item galeria__item--grande">
+                <img src="img/galeria/barra-esquites-cumpleanos.png" alt="Barra Caruma montada en cumpleaños" loading="lazy">
+            </div>
+
+            <div class="galeria__item">
+                <img src="img/galeria/barra-esquites-xv-anos.png" alt="Equipo Caruma atendiendo evento" loading="lazy">
+            </div>
+
+            <div class="galeria__item">
+                <img src="img/galeria/barra-quinceañera.png" alt="Barra Caruma en XV años" loading="lazy">
+            </div>
+            
+            <div class="galeria__item">
+                <img src="img/galeria/barra-sopas-preparadas-cumpleanos.jpeg" alt="Barra de sopas preparadas Caruma en cumpleaños infantil" loading="lazy">
+            </div>
+
+            <div class="galeria__item galeria__item--grande">
+                <img src="img/galeria/barra-snacks-xv-años.jpeg" alt="Barra de snacksCaruma completa en XV años" loading="lazy">
+            </div>
+
+            <div class="galeria__item">
+                <img src="img/galeria/barra-vasos-snacks-fiesta.jpeg" alt="Snacks Caruma servidos" loading="lazy">
+            </div>
+
+            <div class="galeria__item">
+                <img src="img/galeria/boda-barra-sopas-preparadas.jpeg" alt="Barra tostitos, sopas preparadas y esquitesCaruma en boda" loading="lazy">
+            </div>
+
+            <div class="galeria__item">
+                <img src="img/galeria/caruma-cumpleanos.jpeg" alt="Momento especial con barra Caruma" loading="lazy">
+            </div>
+
+            <div class="galeria__item">
+                <img src="img/galeria/cumpleanos-fiesta-esquite.jpeg" alt="cumpleaños con barra Caruma" loading="lazy">
+            </div>
+
+            <div class="galeria__item galeria__item--grande">
+                <img src="img/galeria/esquites-caruma-fiesta.jpeg" alt="Esquites de grano amarillo en evento" loading="lazy">
+            </div>
+
+            <div class="galeria__item">
+                <img src="img/galeria/barra-caruma.jpeg" alt="Esquites Caruma en eventos" loading="lazy">
+            </div>
+
+            <div class="galeria__item">
+                <img src="img/galeria/esquites-quince-anos.jpeg" alt="Barra Caruma decorada para evento" loading="lazy">
+            </div>
+
+            <div class="galeria__item">
+                <img src="img/galeria/fiesta-caruma-barra-tostitos.jpeg" alt="Barra de tostitos Caruma en fiesta" loading="lazy">
+            </div>
+
+            <div class="galeria__item">
+                <img src="img/galeria/fiesta-infantil-esquites.jpeg" alt="Esquites Caruma en fiesta infantil" loading="lazy">
+            </div>
+            
+            <div class="galeria__item galeria__item--grande">
+                <img src="img/galeria/xv-anos-caruma.jpeg" alt="Barra Caruma atendiendo evento en XV años" loading="lazy">
+            </div>
+
+            <div class="galeria__item">
+                <img src="img/galeria/barras-snacks-sopas-tostitos.jpeg" alt="Barras de snacks, sopas y tostitos Caruma en evento" loading="lazy">
+            </div>
+
+            <div class="galeria__item">
+                <img src="img/galeria/quinceanera-esquites-jardin.jpeg" alt="Barra caruma en quinceañera" loading="lazy">
+            </div>
+        </div>
+    </section>
+        <div class="lightbox" id="lightbox">
+            <button class="lightbox__cerrar" id="lightbox-cerrar" aria-label="Cerrar">&times;</button>
+            <button class="lightbox__flecha lightbox__flecha--anterior" id="lightbox-anterior" aria-label="Foto anterior">&#8249;</button>
+            <img src="" alt="" class="lightbox__imagen" id="lightbox-imagen">
+            <button class="lightbox__flecha lightbox__flecha--siguiente" id="lightbox-siguiente" aria-label="Foto siguiente">&#8250;</button>
+        </div>
     </main>
 
 

@@ -1123,3 +1123,143 @@ h1, h2, h3 {
   color: var(--gris-texto);
   font-size: 0.95rem;
 }
+
+.galeria {
+  max-width: 1200px;                        /* Ancho máximo consistente con el resto del sitio */
+  margin: 0 auto;                            /* Centrado */
+  padding: var(--espacio-lg) var(--espacio-md) var(--espacio-xl); /* Espacio arriba/lados medianos, abajo grande */
+}
+
+.galeria__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: 220px;
+  grid-auto-flow: dense;
+  gap: var(--espacio-sm);
+}
+
+.galeria__item {
+  overflow: hidden;                    /* Recorta la imagen si se desborda al hacer zoom en hover */
+  border-radius: var(--radio-borde);    /* Esquinas levemente redondeadas */
+  cursor: pointer;                       /* Cursor de "mano", indica que se puede hacer clic (para el lightbox que armamos después) */
+}
+
+/* La clase "grande" hace que esa foto ocupe 2 columnas Y 2 filas, en vez de solo 1 — así se ve más grande y protagonista */
+.galeria__item--grande {
+  grid-column: span 2;
+  grid-row: span 2;
+}
+
+.galeria__item--ancha {
+  grid-column: span 2;
+}
+
+.galeria__item img {
+  width: 100%;                    /* La imagen llena todo su contenedor */
+  height: 100%;
+  object-fit: cover;                /* Se recorta sin deformarse, mismo truco de siempre */
+  display: block;                    /* Quita espacio fantasma */
+  transition: var(--transicion-suave); /* Anima el efecto de zoom en hover */
+}
+
+/* Al pasar el mouse sobre cualquier foto, hace un zoom sutil hacia adentro */
+.galeria__item:hover img {
+  transform: scale(1.06);   /* Agranda la imagen 6%, el "overflow: hidden" del contenedor recorta lo que se sale */
+}
+
+/* En tablets, reducimos a 2 columnas y bajamos un poco la altura de cada fila */
+@media (max-width: 900px) {
+  .galeria__grid {
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: 180px;
+  }
+}
+
+/* En celulares, 1 sola columna, y las fotos "grandes" ya no ocupan espacio extra (se verían raras en una sola columna) */
+@media (max-width: 500px) {
+  .galeria__grid {
+    grid-template-columns: 1fr;
+    grid-auto-rows: 260px;
+  }
+
+  .galeria__item--grande {
+    grid-column: span 1;
+    grid-row: span 1;
+  }
+}
+
+.lightbox {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(20, 17, 15, 0.92);
+  z-index: 300;
+  align-items: center;
+  justify-content: center;
+}
+
+.lightbox.is-open {
+  display: flex;
+}
+
+.lightbox__imagen {
+  max-width: 85%;
+  max-height: 85vh;
+  border-radius: var(--radio-borde);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+}
+
+.lightbox__cerrar {
+  position: absolute;
+  top: var(--espacio-md);
+  right: var(--espacio-md);
+  background: none;
+  border: none;
+  color: var(--blanco);
+  font-size: 2.5rem;
+  cursor: pointer;
+  line-height: 1;
+  transition: var(--transicion-suave);
+}
+
+.lightbox__cerrar:hover {
+  color: var(--dorado);
+}
+
+.lightbox__flecha {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: var(--blanco);
+  font-size: 3rem;
+  cursor: pointer;
+  padding: var(--espacio-sm);
+  transition: var(--transicion-suave);
+}
+
+.lightbox__flecha:hover {
+  color: var(--dorado);
+}
+
+.lightbox__flecha--anterior {
+  left: var(--espacio-md);
+}
+
+.lightbox__flecha--siguiente {
+  right: var(--espacio-md);
+}
+
+@media (max-width: 600px) {
+  .lightbox__flecha {
+    font-size: 2rem;
+  }
+
+  .lightbox__cerrar {
+    font-size: 2rem;
+  }
+}
