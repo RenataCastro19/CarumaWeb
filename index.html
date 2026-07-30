@@ -3,13 +3,65 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Caruma ofrece barras de snacks y bebidas para eventos en Veracruz. Esquites, chicharrones preparados, micheladas, sopas preparadas y más ">
-    <title>Caruma</title>
+    <!-- Meta description: lo que Google muestra debajo del título en los resultados de búsqueda. Reescrita con palabras clave reales (esquites, micheladas, XV años, bodas, Veracruz, Boca del Río) que la gente busca -->
+    <meta name="description" content="Barras de esquites, micheladas y snacks para XV años, bodas y eventos en Veracruz y Boca del Río. Servicio con personal incluido. Cotiza por WhatsApp.">
+    <!-- Title único por página: incluye el nombre de marca + qué haces + dónde. Esto es lo que aparece en la pestaña del navegador Y como título clickeable en Google -->
+    <title>Caruma | Barras de Snacks y Bebidas para Eventos en Veracruz</title>
+    <!-- Canonical: le dice a Google "esta es la versión oficial de esta URL". Evita que, si alguien accede por una URL ligeramente distinta, Google la trate como contenido duplicado -->
+    <link rel="canonical" href="https://www.carumabarras.com/index.html">
     <link rel="icon" href="img/logo/logo-favicon.png" type="image/png">
     <link rel="stylesheet" href="css/styles.css">
+
+    <!-- === Open Graph: controla cómo se ve tu link al compartirlo en WhatsApp, Facebook, Instagram === -->
+    <meta property="og:title" content="Caruma | Barras de Snacks y Bebidas para Eventos en Veracruz">
+    <meta property="og:description" content="Barras de esquites, micheladas y snacks para XV años, bodas y eventos en Veracruz y Boca del Río.">
+    <!-- og:image es la foto que aparece como preview al compartir el link — usamos la del hero -->
+    <meta property="og:image" content="https://www.carumabarras.com/img/eventos/hero-principal.png">
+    <meta property="og:url" content="https://www.carumabarras.com/index.html">
+    <meta property="og:type" content="website">
+    <!-- og:locale indica el idioma/región, ayuda a que se muestre correctamente en distintas plataformas -->
+    <meta property="og:locale" content="es_MX">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Questrial&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet"></head>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Questrial&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+
+    <!-- === Datos estructurados Schema.org: le da a Google información precisa sobre tu negocio en un formato que puede leer directamente === -->
+    <!-- type="application/ld+json" le dice al navegador que esto no es JavaScript para ejecutar, sino datos estructurados en formato JSON -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",       
+      "@type": "LocalBusiness",                 
+      "name": "Caruma",
+      "alternateName": "Barras Caruma",
+      "image": "https://www.carumabarras.com/img/logo/caruma-logo.png",
+      "description": "Barras de snacks y bebidas para eventos: esquites, micheladas, chicharrones y más.",
+      "telephone": "+525519778386",
+      "email": "barrascaruma@gmail.com",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Veracruz",
+        "addressRegion": "Veracruz",
+        "addressCountry": "MX"
+        },
+        "areaServed": [
+        {
+            "@type": "City",
+            "name": "Veracruz"
+        },
+        {
+            "@type": "City",
+            "name": "Boca del Río"
+        }
+        ],   
+      "priceRange": "$$",                            
+      "sameAs": [                                     
+        "https://www.instagram.com/caruma_barra",
+        "https://www.facebook.com/share/19H92B3DFh/"
+      ]
+    }
+    </script>
+</head>
     
 
 <body>
