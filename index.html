@@ -124,6 +124,34 @@
             </p>
         </div>
     </section>
+
+    <section class="marquee">
+        <div class="marquee__header">
+            
+            <h2 class="marquee__titulo">Momentos que hemos hecho posibles</h2>
+        </div>
+
+        <div class="marquee__track">
+            <div class="marquee__grupo">
+            <img src="img/galeria/esquites-cumpleanos.jpeg" alt="Barra de esquites Caruma en cumpleaños" loading="lazy">
+            <img src="img/galeria/barra-quinceañera.png" alt="Barra Caruma en XV años" loading="lazy">
+            <img src="img/galeria/boda-barra-sopas-preparadas.jpeg" alt="Barra Caruma en boda" loading="lazy">
+            <img src="img/galeria/barra-esquites-bautizo.jpeg" alt="Barra de esquites Caruma en bautizo" loading="lazy">
+            <img src="img/galeria/fiesta-infantil-esquites.jpeg" alt="Esquites Caruma en fiesta infantil" loading="lazy">
+            <img src="img/galeria/xv-anos-caruma.jpeg" alt="Barra Caruma en XV años" loading="lazy">
+            </div>
+            <!-- Grupo idéntico, oculto para lectores de pantalla: solo existe para que el loop sea invisible -->
+            <div class="marquee__grupo" aria-hidden="true">
+            <img src="img/galeria/esquites-cumpleanos.jpeg" alt="" loading="lazy">
+            <img src="img/galeria/barra-quinceañera.png" alt="" loading="lazy">
+            <img src="img/galeria/boda-barra-sopas-preparadas.jpeg" alt="" loading="lazy">
+            <img src="img/galeria/barra-esquites-bautizo.jpeg" alt="" loading="lazy">
+            <img src="img/galeria/fiesta-infantil-esquites.jpeg" alt="" loading="lazy">
+            <img src="img/galeria/xv-anos-caruma.jpeg" alt="" loading="lazy">
+            </div>
+        </div>
+    </section>
+
     <section class="servicios-preview">
         <div class="servicios-preview__header">
             <h2 class="servicios-preview__titulo">Nuestros Servicios</h2>
@@ -132,32 +160,34 @@
 
         <div class="servicios-preview__grid">
             <article class="tarjeta-servicio">
-            <img src="img/productos/esquites.jpeg" alt="Barra de esquites Caruma" class="tarjeta-servicio__imagen">
-            <div class="tarjeta-servicio__contenido">
-                <h3 class="tarjeta-servicio__titulo">Esquites</h3>
-                <p class="tarjeta-servicio__texto">Esquites preparados al momento, con todos los ingredientes clásicos y toppings a elegir.</p>
-            </div>
+                <img src="img/productos/esquites.jpeg" alt="Barra de esquites Caruma" class="tarjeta-servicio__imagen">
+                <div class="tarjeta-servicio__contenido">
+                    <h3 class="tarjeta-servicio__titulo">Esquites</h3>
+                    <p class="tarjeta-servicio__texto">Esquites preparados al momento, con todos los ingredientes clásicos y toppings a elegir.</p>
+                </div>
             </article>
 
             <article class="tarjeta-servicio">
-            <img src="img/productos/micheladas.png" alt="Barra de micheladas Caruma" class="tarjeta-servicio__imagen">
-            <div class="tarjeta-servicio__contenido">
-                <h3 class="tarjeta-servicio__titulo">Micheladas</h3>
-                <p class="tarjeta-servicio__texto">Barra de micheladas personalizada, ideal para bodas y fiestas de mayores de edad.</p>
-            </div>
+                <img src="img/productos/micheladas.png" alt="Barra de micheladas Caruma" class="tarjeta-servicio__imagen">
+                <div class="tarjeta-servicio__contenido">
+                    <h3 class="tarjeta-servicio__titulo">Micheladas</h3>
+                    <p class="tarjeta-servicio__texto">Barra de micheladas personalizada, ideal para bodas y fiestas de mayores de edad.</p>
+                </div>
             </article>
 
             <article class="tarjeta-servicio">
-            <img src="img/productos/chicharrones.png" alt="Chicharrones preparados Caruma" class="tarjeta-servicio__imagen">
-            <div class="tarjeta-servicio__contenido">
-                <h3 class="tarjeta-servicio__titulo">Chicharrones preparados</h3>
-                <p class="tarjeta-servicio__texto">Chicharrones frescos y crujientes, preparados con salsas y acompañamientos al gusto.</p>
-            </div>
+                <img src="img/productos/chicharrones.png" alt="Chicharrones preparados Caruma" class="tarjeta-servicio__imagen">
+                <div class="tarjeta-servicio__contenido">
+                    <h3 class="tarjeta-servicio__titulo">Chicharrones preparados</h3>
+                    <p class="tarjeta-servicio__texto">Chicharrones frescos y crujientes, preparados con salsas y acompañamientos al gusto.</p>
+                </div>
             </article>
         </div>
 
         <a href="servicios.html" class="boton boton--secundario">Ver todos los servicios</a>
     </section>
+
+
     </main>
 
 
@@ -188,10 +218,22 @@
             <div class="footer__contacto">
             <h3 class="footer__titulo">Contacto</h3>
             <p>Veracruz, México</p>
-            <!-- target="_blank" abre en pestaña nueva; rel="noopener noreferrer" es seguridad estándar al abrir en nueva pestaña -->
-            <a href="https://wa.me/525519778386" target="_blank" rel="noopener noreferrer">WhatsApp</a>
-            <a href="https://www.instagram.com/caruma_barra" target="_blank" rel="noopener noreferrer">Instagram</a>
-            <a href="https://www.facebook.com/share/19H92B3DFh/" target="_blank" rel="noopener noreferrer">Facebook</a>
+            <div class="footer__social">
+                <a href="https://www.instagram.com/caruma_barra" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
+                    <path d="M12 2c2.7 0 3.05.01 4.12.06 1.06.05 1.79.22 2.43.47.66.26 1.21.6 1.76 1.15.55.55.89 1.1 1.15 1.76.25.64.42 1.37.47 2.43.05 1.07.06 1.42.06 4.12s-.01 3.05-.06 4.12c-.05 1.06-.22 1.79-.47 2.43a4.9 4.9 0 0 1-1.15 1.76 4.9 4.9 0 0 1-1.76 1.15c-.64.25-1.37.42-2.43.47-1.07.05-1.42.06-4.12.06s-3.05-.01-4.12-.06c-1.06-.05-1.79-.22-2.43-.47a4.9 4.9 0 0 1-1.76-1.15 4.9 4.9 0 0 1-1.15-1.76c-.25-.64-.42-1.37-.47-2.43C2.01 15.05 2 14.7 2 12s.01-3.05.06-4.12c.05-1.06.22-1.79.47-2.43.26-.66.6-1.21 1.15-1.76A4.9 4.9 0 0 1 5.44 2.53c.64-.25 1.37-.42 2.43-.47C8.95 2.01 9.3 2 12 2zm0 1.8c-2.65 0-2.97.01-4.02.06-.86.04-1.33.18-1.64.3-.41.16-.71.35-1.02.66-.31.31-.5.6-.66 1.02-.12.31-.26.78-.3 1.64C4.31 8.03 4.3 8.5 4.3 12c0 3.5.01 3.82.06 4.02.04.86.18 1.33.3 1.64.16.41.35.71.66 1.02.31.31.6.5 1.02.66.31.12.78.26 1.64.3 1.05.05 1.37.06 4.02.06s2.97-.01 4.02-.06c.86-.04 1.33-.18 1.64-.3.41-.16.71-.35 1.02-.66.31-.31.5-.6.66-1.02.12-.31.26-.78.3-1.64.05-.2.06-.52.06-4.02s-.01-3.82-.06-4.02c-.04-.86-.18-1.33-.3-1.64a2.6 2.6 0 0 0-.66-1.02 2.6 2.6 0 0 0-1.02-.66c-.31-.12-.78-.26-1.64-.3C14.97 3.81 14.65 3.8 12 3.8zm0 3.5a4.7 4.7 0 1 1 0 9.4 4.7 4.7 0 0 1 0-9.4zm0 1.8a2.9 2.9 0 1 0 0 5.8 2.9 2.9 0 0 0 0-5.8zm5.9-2a1.1 1.1 0 1 1-2.2 0 1.1 1.1 0 0 1 2.2 0z"/>
+                    </svg>
+                </a>
+                <a href="https://www.facebook.com/share/19H92B3DFh/" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
+                    <path d="M13.5 21v-8h2.7l.4-3.2h-3.1V7.7c0-.9.26-1.5 1.55-1.5H16.7V3.4c-.28-.04-1.24-.12-2.35-.12-2.32 0-3.91 1.42-3.91 4.02v2.24H8v3.2h2.44V21h3.06z"/>
+                    </svg>
+                </a>
+                <a href="https://www.tiktok.com/@caruma_barra" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
+                    <path d="M16.6 2h-3.2v13.4a2.6 2.6 0 1 1-1.8-2.47V9.5a5.9 5.9 0 1 0 5 5.83V8.3a7.4 7.4 0 0 0 4.3 1.37V6.5a4.2 4.2 0 0 1-4.3-4.2z"/>
+                    </svg>
+                </a>
             </div>
         </div>
 

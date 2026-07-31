@@ -32,9 +32,9 @@
   margin: 0;
   padding: 0;
 }
-
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 body {
@@ -42,6 +42,8 @@ body {
   color: var(--gris-texto);
   background-color: var(--blanco);
   line-height: 1.6;
+  overflow-x: hidden;
+  max-width: 100vw;
 }
 
 h1, h2, h3 {
@@ -338,7 +340,7 @@ h1, h2, h3 {
 .hero {
   position: relative;   /* Necesario para que sus elementos hijos (overlay, contenido) se posicionen "absolute" respecto a esta sección */
   width: 100%;            /* Ocupa todo el ancho de la pantalla */
-  height: 100vh;            /* Ocupa el 100% del alto de la ventana visible (vh = viewport height), efecto "pantalla completa" */
+  height: 75vh;            /* Ocupa el 100% del alto de la ventana visible (vh = viewport height), efecto "pantalla completa" */
   overflow: hidden;          /* Si la imagen se pasa un poco del tamaño del contenedor, se recorta en vez de generar scroll */
 }
 
@@ -421,10 +423,10 @@ h1, h2, h3 {
 }
 
 .servicios-preview {
-  max-width: 1200px;                        /* Mismo ancho máximo que el resto del sitio, para mantener alineación */
-  margin: 0 auto;                            /* Centra el bloque horizontalmente */
-  padding: var(--espacio-xl) var(--espacio-md); /* Mucho espacio arriba/abajo (xl), separa bien esta sección de las demás */
-  text-align: center;                         /* Centra el título y subtítulo del encabezado */
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: var(--espacio-md) var(--espacio-md) var(--espacio-xl);
+  text-align: center;
 }
 
 .servicios-preview__header {
@@ -1318,4 +1320,92 @@ h1, h2, h3 {
   background-color: var(--dorado);
   color: var(--blanco);
   transform: scale(1.08);
+}
+
+.footer__social {
+  display: flex;
+  gap: var(--espacio-sm);
+  margin-top: var(--espacio-xs);
+}
+
+.footer__social a {
+  color: var(--blanco);
+  opacity: 0.8;
+  transition: var(--transicion-suave);
+}
+
+.footer__social a:hover {
+  opacity: 1;
+  color: var(--dorado-claro);
+  transform: translateY(-2px);
+}
+
+
+
+
+
+
+.marquee {
+  padding: var(--espacio-md) 0 var(--espacio-md);
+  overflow: hidden;
+}
+
+.marquee__header {
+  text-align: center;
+  margin-bottom: var(--espacio-lg);
+}
+
+.marquee__titulo {
+  font-size: 2rem;
+}
+
+.marquee__track {
+  display: flex;               /* pone los 2 grupos uno al lado del otro */
+  width: max-content;            /* el contenedor mide exactamente lo que ocupa su contenido, no el 100% de la pantalla */
+  animation: marquee-scroll 35s linear infinite;  /* 35s es la velocidad; sube el número para hacerlo más lento */
+}
+
+.marquee__grupo {
+  display: flex;
+  gap: var(--espacio-md);
+  padding-right: var(--espacio-md);  /* espacio entre el último elemento de un grupo y el primero del siguiente */
+}
+
+.marquee__grupo img {
+  width: 320px;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 14px;
+  flex-shrink: 0;
+}
+
+/* La animación mueve el track exactamente el ancho de UN grupo (-50%, porque el track completo mide 2 grupos) */
+@keyframes marquee-scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+
+@media (hover: hover) and (pointer: fine) {
+  .marquee:hover .marquee__track {
+    animation-play-state: paused;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee__track {
+    animation: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .marquee__grupo img {
+    width: 220px;
+    height: 160px;
+  }
+}
+@media (max-width: 768px) {
+  .footer__social {
+    justify-content: center;
+  }
 }
