@@ -645,7 +645,7 @@ h1, h2, h3 {
 }
 
 /* Truco para ALTERNAR el lado de las fotos en bloques pares (2do, 4to, 6to servicio) */
-.servicio-bloque:nth-child(even) .servicio-bloque__fotos {
+.servicio-bloque:nth-of-type(even) .servicio-bloque__fotos {
   order: 2;   /* "order" en CSS Grid/Flexbox cambia el ORDEN VISUAL sin cambiar el orden real del HTML — así el 2do bloque muestra el texto primero y las fotos después, dando la sensación de alternancia */
 }
 
@@ -863,14 +863,7 @@ h1, h2, h3 {
   }
 }
 
-.historia__titulo::before {
-  content: '';
-  display: block;
-  width: 60px;
-  height: 2px;
-  background-color: var(--dorado);
-  margin: 0 auto var(--espacio-md);
-}
+
 
 .distintivo__icono {
   display: flex;
@@ -1452,4 +1445,18 @@ h1, h2, h3 {
   width: 0%;
   background-color: var(--dorado);
   z-index: 500;
+}
+
+.separador-dorado {
+  width: 0;
+  height: 2px;
+  background-color: var(--dorado);
+  margin: 0 auto;
+  opacity: 0;
+  transition: width 1.2s ease, opacity 0.8s ease;
+}
+
+.separador-dorado.is-visible {
+  width: 80px;
+  opacity: 1;
 }
