@@ -152,4 +152,15 @@ if (iconosDistintivo.length > 0) {
 
   iconosDistintivo.forEach((icono) => observadorIconos.observe(icono));
 }
+
+const barraProgreso = document.getElementById('progreso-scroll');
+
+if (barraProgreso) {
+  window.addEventListener('scroll', () => {
+    const alturaTotal = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    const scrollActual = document.documentElement.scrollTop;
+    const porcentaje = (scrollActual / alturaTotal) * 100;
+    barraProgreso.style.width = porcentaje + '%';
+  });
+}
 });

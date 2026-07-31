@@ -505,20 +505,25 @@ h1, h2, h3 {
 }
 
 .intro {
-  max-width: 800px;                        /* Limita el ancho del bloque completo, para que el texto no se estire de lado a lado en pantallas grandes */
-  margin: 0 auto;                            /* Centra el bloque horizontalmente */
-  padding: var(--espacio-xl) var(--espacio-md); /* Mucho espacio arriba/abajo, para que la sección "respire" y se sienta importante */
-  text-align: center;                         /* Centra todo el texto dentro */
+  max-width: 800px;
+  margin: 0 auto;
+  padding: var(--espacio-xl) var(--espacio-md) var(--espacio-md);
+  text-align: center;
 }
 
 /* ::before crea un elemento decorativo ANTES del contenido de .intro__contenido — aquí lo usamos como una lineita dorada */
 .intro__contenido::before {
-  content: '';                        /* Obligatorio para que el ::before se renderice, aunque esté vacío */
-  display: block;                      /* Se comporta como un bloque independiente, no como texto en línea */
-  width: 60px;                          /* Ancho de la línea decorativa */
-  height: 2px;                           /* Grosor de la línea */
-  background-color: var(--dorado);        /* Color dorado, el mismo acento de toda la marca */
-  margin: 0 auto var(--espacio-md);        /* Centra la línea horizontalmente y deja espacio hacia el título de abajo */
+  content: '';
+  display: block;
+  width: 0;
+  height: 2px;
+  background-color: var(--dorado);
+  margin: 0 auto var(--espacio-md);
+  transition: width 1.2s ease;
+}
+
+.intro.is-visible .intro__contenido::before {
+  width: 60px;
 }
 
 .intro__titulo {
@@ -644,17 +649,25 @@ h1, h2, h3 {
   order: 2;   /* "order" en CSS Grid/Flexbox cambia el ORDEN VISUAL sin cambiar el orden real del HTML — así el 2do bloque muestra el texto primero y las fotos después, dando la sensación de alternancia */
 }
 
-/* En pantallas medianas/chicas, todo se apila en 1 columna y ya no alternamos (se vería raro en móvil) */
 @media (max-width: 900px) {
   .servicio-bloque {
-    grid-template-columns: 1fr;         /* 1 sola columna */
-    gap: var(--espacio-lg);               /* Reducimos el espacio, ya no necesita tanto en columna única */
-    padding: var(--espacio-lg) var(--espacio-md); /* Reducimos el padding vertical también */
+    grid-template-columns: 1fr;
+    gap: var(--espacio-lg);
+    padding: var(--espacio-lg) var(--espacio-md);
   }
 
   .servicio-bloque__fotos {
-    height: 380px;   /* Reducimos un poco la altura del contenedor de fotos en pantallas chicas */
-    order: 0 !important;   /* Forzamos que SIEMPRE las fotos vayan primero en móvil, sin importar si es un bloque par o impar (cancela el alternado) */
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    gap: var(--espacio-sm);
+    order: 0 !important;
+  }
+
+  .servicio-bloque__foto {
+    position: static;
+    width: 100%;
+    height: 260px;
   }
 }
 
@@ -1408,4 +1421,35 @@ h1, h2, h3 {
   .footer__social {
     justify-content: center;
   }
+}
+
+.linea-dorada {
+  display: block;
+  width: 60px;
+  height: 4px;
+  margin: 0 auto var(--espacio-sm);
+}
+
+.linea-dorada path {
+  fill: none;
+  stroke: var(--dorado);
+  stroke-width: 2;
+  stroke-dasharray: 60;
+  stroke-dashoffset: 60;
+  transition: stroke-dashoffset 1.2s ease;
+}
+
+.linea-dorada.is-visible path {
+  stroke-dashoffset: 0;
+}
+
+
+.progreso-scroll {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 4px;
+  width: 0%;
+  background-color: var(--dorado);
+  z-index: 500;
 }
