@@ -1,37 +1,37 @@
 // Espera a que TODO el HTML esté cargado antes de ejecutar el código (evita errores por buscar elementos que aún no existen)
 document.addEventListener('DOMContentLoaded', () => {
 
-  // Busca el botón hamburguesa en el HTML
-  const navToggle = document.querySelector('.nav__toggle');
-  // Busca la lista de links del menú
-  const navMenu = document.querySelector('.nav__menu');
+const navToggle = document.querySelector('.nav__toggle');
+const navMenu = document.querySelector('.nav__menu');
+const navOverlay = document.querySelector('.nav__overlay');
 
-  // Verificación de seguridad: solo ejecuta el código si AMBOS elementos existen en la página
-  if (navToggle && navMenu) {
+if (navToggle && navMenu) {
+  navToggle.addEventListener('click', () => {
+    const isOpen = navMenu.classList.toggle('is-open');
+    navToggle.classList.toggle('is-active');
+    if (navOverlay) navOverlay.classList.toggle('is-open');
+    navToggle.setAttribute('aria-expanded', isOpen);
+    navToggle.setAttribute('aria-label', isOpen ? 'Cerrar menú' : 'Abrir menú');
+  });
 
-    // Cuando el usuario hace click en el botón hamburguesa...
-    navToggle.addEventListener('click', () => {
-      // toggle() agrega la clase si no existe, o la quita si ya existe. Devuelve true/false según quedó
-      const isOpen = navMenu.classList.toggle('is-open');
-      // Lo mismo para el botón, así se anima la transformación a "X"
-      navToggle.classList.toggle('is-active');
-      // Actualiza el atributo de accesibilidad para lectores de pantalla (indica si el menú está abierto o cerrado)
-      navToggle.setAttribute('aria-expanded', isOpen);
-      // Cambia el texto que leerá un lector de pantalla, según el estado actual
-      navToggle.setAttribute('aria-label', isOpen ? 'Cerrar menú' : 'Abrir menú');
+  document.querySelectorAll('.nav__link').forEach(link => {
+    link.addEventListener('click', () => {
+      navMenu.classList.remove('is-open');
+      navToggle.classList.remove('is-active');
+      if (navOverlay) navOverlay.classList.remove('is-open');
+      navToggle.setAttribute('aria-expanded', false);
     });
+  });
 
-    // Selecciona TODOS los links del menú (Inicio, Nosotros, etc.) y recorre cada uno
-    document.querySelectorAll('.nav__link').forEach(link => {
-      // Cuando el usuario toca cualquier link del menú...
-      link.addEventListener('click', () => {
-        // Cierra el menú automáticamente (útil en móvil, para no tener que cerrarlo manualmente después de navegar)
-        navMenu.classList.remove('is-open');
-        navToggle.classList.remove('is-active');
-        navToggle.setAttribute('aria-expanded', false);
-      });
+  if (navOverlay) {
+    navOverlay.addEventListener('click', () => {
+      navMenu.classList.remove('is-open');
+      navToggle.classList.remove('is-active');
+      navOverlay.classList.remove('is-open');
+      navToggle.setAttribute('aria-expanded', false);
     });
   }
+}
   // Busca el formulario en el HTML usando su id
 const formularioContacto = document.getElementById('formulario-contacto');
 
