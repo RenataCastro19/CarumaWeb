@@ -13,7 +13,7 @@
   --fuente-cuerpo: 'Open Sans', sans-serif;
 
   /* --- Espaciado (escala consistente, evita valores random tipo 13px, 27px) --- */
-  --espacio-xs: 0.5rem;   /* 8px */
+  --espacio-xs: 0.2rem;   /* 8px */
   --espacio-sm: 1rem;     /* 16px */
   --espacio-md: 2rem;     /* 32px */
   --espacio-lg: 4rem;     /* 64px */
@@ -66,11 +66,22 @@ h1, h2, h3 {
 }
 
 .header {
-  position: sticky;      /* El header se queda pegado arriba al hacer scroll, en vez de desaparecer */
-  top: 0;                 /* Se pega exactamente en el borde superior de la ventana */
-  z-index: 100;            /* Se asegura de quedar ENCIMA del resto del contenido (números altos = más al frente) */
-  background-color: var(--blanco);              /* Fondo blanco hueso para que no se transparente el contenido de abajo */
-  border-bottom: 1px solid rgba(20, 17, 15, 0.08); /* Línea sutil de separación, casi transparente (8% de opacidad) */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+  background-color: var(--blanco);
+  border-bottom: 1px solid rgba(20, 17, 15, 0.08);
+  transition: transform 0.3s ease;
+}
+
+main {
+  padding-top: 88px;
+}
+
+.header.header--oculto {
+  transform: translateY(-100%);
 }
 
 .nav {
@@ -1499,4 +1510,13 @@ h1, h2, h3 {
 .separador-dorado.is-visible {
   width: 80px;
   opacity: 1;
+}
+
+.formulario__contador {
+  display: block;
+  text-align: right;
+  font-size: 0.8rem;
+  color: var(--gris-texto);
+  opacity: 0.7;
+  margin-top: 0.3rem;
 }

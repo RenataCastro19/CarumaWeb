@@ -163,4 +163,60 @@ if (barraProgreso) {
     barraProgreso.style.width = porcentaje + '%';
   });
 }
+
+const headerNav = document.querySelector('.header');
+let ultimoScroll = 0;
+let tickingHeader = false;
+
+if (headerNav) {
+  window.addEventListener('scroll', () => {
+    if (!tickingHeader) {
+      window.requestAnimationFrame(() => {
+        const scrollActual = window.scrollY;
+        const diferencia = scrollActual - ultimoScroll;
+
+        if (scrollActual > 150 && diferencia > 5) {
+          headerNav.classList.add('header--oculto');
+        } else if (diferencia < -5 || scrollActual <= 150) {
+          headerNav.classList.remove('header--oculto');
+        }
+
+        ultimoScroll = scrollActual;
+        tickingHeader = false;
+      });
+
+      tickingHeader = true;
+    }
+  });
+}
+
+function activarContador(idCampo, idContador, limite) {
+  const campo = document.getElementById(idCampo);
+  const contador = document.getElementById(idContador);
+
+  if (campo && contador) {
+    campo.addEventListener('input', () => {
+      contador.textContent = `${campo.value.length}/${limite}`;
+    });
+  }
+}
+
+activarContador('nombre', 'contador-nombre', 30);
+activarContador('mensaje', 'contador-mensaje', 200);
+
+const campoNombre = document.getElementById('nombre');
+
+if (campoNombre) {
+  campoNombre.addEventListener('input', () => {
+    campoNombre.value = campoNombre.value.replace(/[^a-zA-ZÀ-ÿñÑ\s]/g, '');
+  });
+}
+
+const campoInvitados = document.getElementById('invitados');
+
+if (campoInvitados) {
+  campoInvitados.addEventListener('input', () => {
+    campoInvitados.value = campoInvitados.value.replace(/[^0-9]/g, '');
+  });
+}
 });

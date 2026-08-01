@@ -97,7 +97,8 @@
                 <p class="formulario__subtitulo">Cuéntanos los detalles y te contactamos en menos de 24 horas</p>
                 <div class="formulario__campo">
                     <label for="nombre">Nombre</label>
-                    <input type="text" id="nombre" name="nombre" required>
+                    <input type="text" id="nombre" name="nombre" maxlength="30" required>
+                    <span class="formulario__contador" id="contador-nombre">0/30</span>
                 </div>
 
                 <div class="formulario__campo">
@@ -120,7 +121,7 @@
 
                     <div class="formulario__campo">
                         <label for="invitados">Número de invitados</label>
-                        <input type="number" id="invitados" name="invitados" min="1" required>
+                        <input type="number" id="invitados" name="invitados" min="1" max="1200" required>
                     </div>
                 </div>
 
@@ -140,7 +141,8 @@
 
                 <div class="formulario__campo">
                     <label for="mensaje">Cuéntanos más (opcional)</label>
-                    <textarea id="mensaje" name="mensaje" rows="4"></textarea>
+                    <textarea id="mensaje" name="mensaje" rows="4" maxlength="200"></textarea>
+                    <span class="formulario__contador" id="contador-mensaje">0/200</span>
                 </div>
 
                 <button type="submit" class="boton boton--principal formulario__enviar">
@@ -183,8 +185,8 @@
 
             <!-- Columna 3: datos de contacto directo -->
             <div class="footer__contacto">
-            <h3 class="footer__titulo">Contacto</h3>
-            <p>Veracruz, México</p>
+            <h3 class="footer__titulo">Redes sociales</h3>
+            
             <div class="footer__social">
                 <a href="https://www.instagram.com/caruma_barra" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
@@ -202,6 +204,7 @@
                     </svg>
                 </a>
             </div>
+            <p>Veracruz, México</p>
         </div>
 
         <!-- Barra inferior separada, solo con el copyright -->
